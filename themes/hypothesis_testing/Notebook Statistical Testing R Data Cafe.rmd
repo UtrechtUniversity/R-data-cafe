@@ -1,0 +1,187 @@
+---
+title: "Notebook Statistical Testing R Data Cafe"
+author: "Kees Mulder"
+date: "November 13, 2017"
+output: 
+  html_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+## Statistical testing in R 
+
+First, we'll create a data set that has only observed ozone values. Note that this data is temporally dependent, which we'll ignore for demonstration purposes. 
+
+
+```{r}
+
+library(ggplot2)
+library(dplyr)
+
+# Select 
+aq_obs <- airquality[complete.cases(airquality), ]
+```
+
+
+
+## ANOVA-type testing
+
+First, we'll make a new variable that denotes whether the day had a high or low temperature. We can use the R function `cut`.
+
+```{r}
+aq_obs$HighTemperature <- cut(aq_obs$Temp, breaks = 2, labels = c("Cold", "Hot"))
+
+aq_obs$HighTemperature
+```
+
+An ANOVA asks the question of whether two groups differ. In this case, we are interested in whether or not there is more ozone on hot rather than cold days. First, let's look at the summary statistics. I'll use [`dplyr`](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html) and `ggplot2`, but don't worry if you're not familiar. 
+
+```{r}
+aq_obs %>% group_by(HighTemperature) %>% summarize(mean(Ozone), median(Ozone), min(Ozone), max(Ozone))
+```
+
+The groups seem quite different. We can visualize this by running:
+
+```{r}
+
+ggplot(aq_obs, aes(x = Ozone)) + geom_histogram() + facet_wrap(~HighTemperature) + theme_bw()
+```
+
+
+The statistical test can be done by `aov`. NOTE: R has some fairly confusing terminology, because it has both functions `anova` and `aov`. The typical ANOVA is done using `aov`. The function `anova` is used to compare different models. I'll show how they relate below in a later section. 
+
+```{r}
+aq_anova_model <- aov(Ozone ~ HighTemperature, data = aq_obs)
+aq_anova_model
+```
+
+This does provide the typical ANOVA table, but no significance test. We can obtain that by:
+
+```{r}
+summary(aq_anova_model)
+```
+
+Clearly, the groups differ. 
+
+## Regression
+
+A regression has a continuous outcome and some set of categorical and continuous predictors. A regression analysis in `R` is simply performed by the `lm()` command, and statistical tests are provided. Let's look at a plot first:
+
+```{r}
+ggplot(aq_obs, aes(x = Temp, y = Ozone)) + geom_point() + theme_bw()
+```
+
+
+```{r}
+temp_lm <- lm(Ozone ~ Temp, data = aq_obs)
+
+summary(temp_lm)
+```
+
+Temperature is definitely a signficant predictor. Checking assumptions can be done through the running `plot` on the `lm` outcome object:
+
+```{r}
+plot(temp_lm)
+```
+
+Note that the residuals are note nicely distributed and the QQ-plots also leave something to be desired. A transformation might be in order. 
+
+Transformations can easily be applied in the formula syntax. For example:
+
+```{r}
+temp_log_lm <- lm(log(Ozone) ~ Temp, data = aq_obs)
+
+summary(temp_log_lm)
+```
+
+Note that the R-squared has increased by taking the log, suggesting that this model fits better. Interactions can also be added easily:
+
+```{r}
+temp_log_interaction_lm <- lm(log(Ozone) ~ Temp*Wind, data = aq_obs)
+summary(temp_log_interaction_lm)
+```
+
+Note that we automatically get the intercept and the main effects. All can also be turned off.
+
+For quadratic (and higher powers) transformations, we need to use `I()` around the variable:
+
+```{r}
+temp_log_quadratic_lm <- lm(log(Ozone) ~ Temp + Wind + I(Wind^2), data = aq_obs)
+summary(temp_log_quadratic_lm)
+```
+
+
+
+
+## Relationship between ANOVA and regression
+
+As you may know, ANOVA and regression are deeply related concepts. In R, we can easily show how these are related. An ANOVA table is computed by comparing how much residual variance (which you can think of as unexplained error) there is left after incorporating predictors in a model. Here, we can show this by computing two regression models:
+
+```{r}
+icpt_model <- lm(Ozone ~ 1, data = aq_obs)
+temp_model <- lm(Ozone ~ HighTemperature, data = aq_obs)
+```
+
+The first does not have any predictors, and the second does have a categorical predictor. The ANOVA compares how well these models each predict the outcome, and compares this. Look at the output of the `aov` model fit first, and then at the model comparison of the two regression models by means of the `anova()` function, and see that the results are exactly the same:
+
+```{r}
+summary(aq_anova_model)
+
+# Two regressions as input gives the same result.
+anova(icpt_model, temp_model)
+```
+
+
+It should be clear that this means that we can use the `anova` function also much more generally to compare any two nested models tested on the same dataset:
+
+```{r}
+wind_model <- lm(Ozone ~ HighTemperature + Wind, data = aq_obs)
+interaction_model <- lm(Ozone ~ HighTemperature + Wind + HighTemperature*Wind, data = aq_obs)
+
+
+anova(icpt_model, temp_model, wind_model, interaction_model)
+```
+
+Our conclusion is that all of these models improve on the previous one, so we the most complex model is the best. 
+
+
+## ANCOVA
+
+Usually, you would perform an analysis of covariance (ANCOVA) in the regression context. For example:
+
+
+```{r}
+ancova_type_mod <- lm(log(Ozone) ~ Temp + Wind, data = aq_obs)
+summary(ancova_type_mod)
+```
+
+
+## GLM
+
+We can easily fit a GLM using the `glm()` function. Let's show it by predicting the dichotomous temperature variable in a logisitic regression.
+
+```{r}
+aq_glm <- glm(HighTemperature ~ Ozone, data = aq_obs, family = binomial(link = "logit"))
+
+summary(aq_glm)
+```
+
+
+
+## Bayesian models 
+
+Nowadays, if you want to make your GLM Bayesian, you can very easily do it with the `brms` package: just replace `glm` or `lm` by `brm`.
+
+```{r, eval = FALSE}
+library(brms)
+aq_bayes_glm <- brm(Ozone ~ Temp, data = aq_obs)
+
+summary(aq_bayes_glm)
+```
+
+
+
