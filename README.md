@@ -11,7 +11,7 @@ of exercises is http://r4ds.had.co.nz/. This website makes use of tidyverse, a v
 popular framework for data handling in R.
 
 During each event, an R user demonstrates an interesting package or application of R. 
-The additional material for the demonstrations can be found in the [themes folder](/theme/).
+The additional material for the demonstrations can be found in the [themes folder](/themes/).
 
 ## Organisation:
 
