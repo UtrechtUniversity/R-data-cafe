@@ -6,9 +6,7 @@ problems. The two hours during event is held every month and is open without
 registration.
 
 This repository contains additional material for the R data café. There are several 
-exercises and tips in the [exercises folder](/exercises/). A good website with a lot
-of exercises is http://r4ds.had.co.nz/. This website makes use of tidyverse, a very
-popular framework for data handling in R.
+exercises and tips in the [exercises folder](/exercises/). 
 
 During each event, an R user demonstrates an interesting package or application of R. 
 The additional material for the demonstrations can be found in the [themes folder](/themes/).
@@ -39,6 +37,26 @@ cafe. We are always looking for people who want to present something. Please
 send an email to [Jonathan de Bruin](j.debruin1@uu.nl) to request or give a
 presenation.
 
+## Resources
+
+**Data Handling**
+- http://r4ds.had.co.nz/transform.html
+- [Dates and times cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/lubridate.pdf)
+- [Work with strings cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/strings.pdf)
+- [Data transformation cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)
+
+**Generalised linear models (GLM)**
+- https://www.r-bloggers.com/generalised-linear-models-in-r/
+- https://www.r-bloggers.com/how-to-perform-a-logistic-regression-in-r/
+- https://www.r-bloggers.com/an-intro-to-models-and-generalized-linear-models-in-r/
+
+**Visualisation**
+- http://r4ds.had.co.nz/data-visualisation.html (ggplot)
+- [Data visualisation cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf)
+
+**Documenting**
+- https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf
+- [R markdown reference](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
 
 ## Organisation:
 
