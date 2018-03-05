@@ -29,6 +29,13 @@ The additional material for the demonstrations can be found in the [themes folde
 |   [14 May 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-6)    | Bucheliusroom UU Library (Uithof) |                                                                |
 |   [11 June 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-7)   | Bucheliusroom UU Library (Uithof) |                                                                |
 
+## Themes
+
+Each R data café has a special theme. The theme is a short presentation or
+demonstration of half an hour. The presentations are given by attendees of the
+cafe. We are always looking for people who want to present something. Please
+send an email to [Jonathan de Bruin](j.debruin1@uu.nl) to request or give a
+presenation.
 
 
 ## Organisation:
