@@ -17,17 +17,19 @@ The additional material for the demonstrations can be found in the [themes folde
 
 ## Dates
 
-|                 When                 |               Where               |                             Theme                              |
-|:------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
-| 16 October 2017 from 15:00 to 17:00  | Bucheliusroom UU Library (Uithof) |                ggplot by Jonathan de Bruin (UU)                |
-| 13 November 2017 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) |             Hypothesis testing by Kees Mulder (UU)             |
-| 11 December 2017 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) |          ~~Cancelled due to bad weather conditions~~           |
-| 15 Januari 2018 from 15:00 to 17:00  | Bucheliusroom UU Library (Uithof) |            Regular Expressions by Tessa Pronk (UU)             |
-| 12 February 2018 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) | Reading and writing foreign dataformats by Wietze Pasma (UMCU) |
-|  12 March 2018 from 15:00 to 17:00   | Bucheliusroom UU Library (Uithof) |              R Markdown by Jonathan de Bruin (UU)              |
-|  16 April 2018 from 15:00 to 17:00   | Bucheliusroom UU Library (Uithof) |                                                                |
-|   14 May 2018 from 15:00 to 17:00    | Bucheliusroom UU Library (Uithof) |                                                                |
-|   11 June 2018 from 15:00 to 17:00   | Bucheliusroom UU Library (Uithof) |                                                                |
+|                                       When                                        |               Where               |                             Theme                              |
+|:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
+|                        16 October 2017 from 15:00 to 17:00                        | Bucheliusroom UU Library (Uithof) |                ggplot by Jonathan de Bruin (UU)                |
+|                       13 November 2017 from 15:00 to 17:00                        | Bucheliusroom UU Library (Uithof) |             Hypothesis testing by Kees Mulder (UU)             |
+| [11 December 2017 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-1) | Bucheliusroom UU Library (Uithof) |          ~~Cancelled due to bad weather conditions~~           |
+| [15 Januari 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-2)  | Bucheliusroom UU Library (Uithof) |            Regular Expressions by Tessa Pronk (UU)             |
+| [12 February 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-3) | Bucheliusroom UU Library (Uithof) | Reading and writing foreign dataformats by Wietze Pasma (UMCU) |
+|  [12 March 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-4)   | Bucheliusroom UU Library (Uithof) |              R Markdown by Jonathan de Bruin (UU)              |
+|  [16 April 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-5)   | Bucheliusroom UU Library (Uithof) |                                                                |
+|   [14 May 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-6)    | Bucheliusroom UU Library (Uithof) |                                                                |
+|   [11 June 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-7)   | Bucheliusroom UU Library (Uithof) |                                                                |
+
+
 
 ## Organisation:
 
