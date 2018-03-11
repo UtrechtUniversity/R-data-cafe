@@ -1,0 +1,53 @@
+---
+title: "Example for R Data Cafe!"
+author: "Jonathan de Bruin"
+date: "4/11/2018"
+output: html_document
+---
+
+## Introduction R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+
+```{r cars}
+summary(cars)
+```
+
+You can output the result of the code block without displaying the code itself. A chunck without code looks like this:
+```{r cars_without_code, echo=FALSE}
+summary(cars)
+```
+
+## Load libraries
+
+It is possible to load libraries without displaying them in your document. The code below is hidden.
+
+```{r test, include=FALSE}
+
+library("MASS")
+library("zoo")
+```
+
+## Inline code
+
+Inline code execution is possible with a slightly different syntax. An example is: The average distance is `r mean(cars$dist)` and the average speed is `r mean(cars$speed)`.
+
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+You can define the size of plots, for example:
+
+```{r cars_plot, fig.width=4, fig.height=5, fig.cap="resized image", echo=FALSE}
+plot(cars)
+```
