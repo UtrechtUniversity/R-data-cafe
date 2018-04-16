@@ -24,7 +24,7 @@ The additional material for the demonstrations can be found in the [themes folde
 | [15 Januari 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-2) | Bucheliusroom UU Library (Uithof) | [Regular Expressions by Tessa Pronk (UU)](themes/regular_expressions) |
 | [12 February 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-3) | Bucheliusroom UU Library (Uithof) | [Reading and writing foreign dataformats by Wietze Pasma (UMCU)](themes/data_import_export) |
 | [12 March 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-4) | Bucheliusroom UU Library (Uithof) | [R Markdown by Jonathan de Bruin (UU)](themes/Rmarkdown) |
-| [16 April 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-5) | Bucheliusroom UU Library (Uithof) | |
+| [16 April 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-5) | Bucheliusroom UU Library (Uithof) | JASP by Erik-Jan van Kesteren |
 | [14 May 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-6) | Bucheliusroom UU Library (Uithof) | |
 | [11 June 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-7) | Bucheliusroom UU Library (Uithof) | |
 
