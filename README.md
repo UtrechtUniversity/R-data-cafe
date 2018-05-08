@@ -27,6 +27,7 @@ The additional material for the demonstrations can be found in the [themes folde
 | [16 April 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-5) | Bucheliusroom UU Library (Uithof) | JASP by Erik-Jan van Kesteren |
 | [14 May 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-6) | Bucheliusroom UU Library (Uithof) | Joining data by Jonathan de Bruin |
 | [11 June 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-7) | Bucheliusroom UU Library (Uithof) | |
+| summer break | - | - |
 
 
 ## Themes
