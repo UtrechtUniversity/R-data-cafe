@@ -1,0 +1,307 @@
+Joining data with R
+========================================================
+author: Jonathan de Bruin
+date: 14 May 2018
+autosize: false
+
+
+<style>
+.small-code pre code {
+  font-size: 1em;
+}
+</style>
+
+Joining data
+========================================================
+class: small-code
+
+- Merge two or more datasets into one
+
+- 'Joining' and 'merging' data mean the same thing
+
+- R implementations are inspired by the SQL database syntax.
+
+
+Outline
+========================================================
+class: small-code
+
+- Simple joins
+  - Inner, left, right and outer joins
+
+- Special joins
+  - Semi- and anti-joins
+
+- Advanced joins
+  - Overlap and fuzzy joins
+
+
+Often visualized with Venn diagrams
+========================================================
+class: small-code
+
+<center>![venn.png](venn.png)</center>
+
+Source: http://www.dofactory.com/sql/join
+
+
+Demo data
+========================================================
+class: small-code
+
+```{r, echo=FALSE}
+
+library(tidyverse)
+library(readr)
+
+patient <- "
+patient_id, name, gender,  dob
+189234988, Smith, male, 1990-10-10
+278923732, Jones, female, 1930-01-09
+849058094, Zabrinsky, female, 1953-04-08
+"
+patient <- read_csv(patient, skip = 1) %>% as.data.frame()
+write_csv(patient, 'data/patient.csv')
+
+measures <- "
+patient_id,    type,   value
+189234988,       measure_x,  0.17
+189234988,      measure_y, 69
+849058094,       measure_x,  0.25
+849058094,      measure_z, 0.33
+829305840, measure_y, 71
+198234988, measure_z, 0.34
+"
+measures <- read_csv(measures, skip = 1) %>% as.data.frame()
+write_csv(measures, 'data/measures.csv')
+
+```
+
+```{r}
+patient
+```
+
+```{r}
+measures
+```
+
+Base R syntax
+========================================================
+class: small-code
+
+- Inner join
+
+```{r}
+merge(patient, measures, by = 'patient_id')
+```
+
+Base R syntax
+========================================================
+class: small-code
+
+- Left join
+
+```{r}
+merge(patient, measures, by = 'patient_id', all.x = T, all.y = F)
+```
+
+
+Base R syntax
+========================================================
+class: small-code
+
+- Outer/full join
+
+```{r}
+merge(patient, measures, by = 'patient_id', all = T)
+```
+
+
+dplyr R syntax
+========================================================
+class: small-code
+
+Import the `dplyr` library
+
+```{r, output=FALSE}
+library(dplyr)
+```
+
+- Inner join
+
+```{r}
+inner_join(patient, measures, by = 'patient_id')
+```
+
+dplyr R syntax
+========================================================
+class: small-code
+
+- Left join
+
+```{r}
+left_join(patient, measures, by = 'patient_id')
+```
+
+dplyr R syntax
+========================================================
+class: small-code
+
+- Outer/full join
+
+```{r}
+full_join(patient, measures, by = 'patient_id')
+```
+
+Semi-join
+==========================
+class: small-code
+
+- Help: *'Returns all rows from `x` where there are matching values in `y`, keeping just columns from `x`.’*
+
+- **All patients with measures!**
+
+dplyr code:
+
+```{r}
+semi_join(patient, measures, by = 'patient_id')
+```
+
+Semi-join
+==========================
+class: small-code
+
+- Help: *'Returns all rows from `x` where there are matching values in `y`, keeping just columns from `x`.’*
+
+- **All patients with measures!**
+
+More complex syntax in base R:
+
+```{r}
+subset(patient, patient$patient_id %in% measures$patient_id)
+```
+
+
+Anti-join
+==========================
+class: small-code
+
+- Help: *'Returns all rows from `x` where there are not matching values in `y`, keeping just columns from `x`.’*
+
+- **All patients without measures!**
+
+dplyr code:
+
+```{r}
+anti_join(patient, measures, by = 'patient_id')
+```
+
+Anti-join
+==========================
+class: small-code
+
+- Help: *'Returns all rows from `x` where there are not matching values in `y`, keeping just columns from `x`.’*
+
+- **All patients without measures!**
+
+More complex syntax in base R:
+
+```{r}
+subset(patient, !(patient$patient_id %in% measures$patient_id))
+```
+
+
+Fuzzy (inner) join
+==========================
+class: small-code
+
+- Join datasets on partially matching keys
+
+- People make typos (insertions, deletions and substitutions)
+
+Not implement in base R, but possible to write by yourself
+
+```{r}
+
+library(reshape2)
+
+distance_matrix <- adist(patient$patient_id, measures$patient_id)
+
+distance_matrix_tidy <- melt(distance_matrix)
+colnames(distance_matrix_tidy) <- c(
+    "record_pat", "record_meas", "distance"
+)
+
+# consider all records with less than 5 mistakes are matches
+matches <- distance_matrix_tidy[distance_matrix_tidy$distance < 3,]
+matches$distance <- NULL
+
+df_fuzzy_joined <- merge(
+    merge(matches, patient, by.x='record_pat', by.y=0),
+    measures, by.x='record_meas', by.y=0
+)
+
+df_fuzzy_joined
+```
+
+
+Fuzzy (inner) join (step 1)
+==========================
+class: small-code
+
+- Compute the string similarity matrix.
+
+```{r}
+distance_matrix <- adist(patient$patient_id, measures$patient_id)
+
+distance_matrix
+```
+
+Fuzzy (inner) join (step 2)
+==========================
+class: small-code
+
+- Make the data tidy.
+
+```{r}
+library(reshape2)
+
+distance_matrix_tidy <- melt(distance_matrix)
+colnames(distance_matrix_tidy) <- c(
+    "record_pat", "record_meas", "distance"
+)
+
+distance_matrix_tidy
+```
+
+
+Fuzzy (inner) join (step 3)
+==========================
+class: small-code
+
+- Set the maximum number of mistakes to less than 3.
+
+```{r}
+# consider all records with less than 5 mistakes are matches
+matches <- distance_matrix_tidy[distance_matrix_tidy$distance < 3,]
+matches$distance <- NULL
+
+matches
+```
+
+
+Fuzzy (inner) join (step 4)
+==========================
+class: small-code
+
+- Perform a double join. 
+- 189234988 and 198234988 match!!
+
+```{r}
+df_fuzzy_joined <- merge(
+    merge(matches, patient, by.x='record_pat', by.y=0),
+    measures, by.x='record_meas', by.y=0
+)
+
+df_fuzzy_joined
+```
