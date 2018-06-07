@@ -26,7 +26,7 @@ The additional material for the demonstrations can be found in the [themes folde
 | [12 March 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-4) | Bucheliusroom UU Library (Uithof) | [R Markdown by Jonathan de Bruin (UU)](themes/Rmarkdown) |
 | [16 April 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-5) | Bucheliusroom UU Library (Uithof) | JASP by Erik-Jan van Kesteren |
 | [14 May 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-6) | Bucheliusroom UU Library (Uithof) | [Joining data by Jonathan de Bruin (UU)](themes/joining_data) |
-| [11 June 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-7) | Bucheliusroom UU Library (Uithof) | |
+| [11 June 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-7) | Bucheliusroom UU Library (Uithof) | Meta-analyses by Cathalijn Leenaars (UU) |
 | summer break | - | - |
 
 
