@@ -28,6 +28,10 @@ The additional material for the demonstrations can be found in the [themes folde
 | [14 May 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-6) | Bucheliusroom UU Library (Uithof) | [Joining data by Jonathan de Bruin (UU)](themes/joining_data) |
 | [11 June 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-7) | Bucheliusroom UU Library (Uithof) | Meta-analyses by Cathalijn Leenaars (UU) |
 | summer break | - | - |
+| [10 September 2018 from 15:00 to 17:00](https://www.uu.nl/en/research/research-data-management) | Bucheliusroom UU Library (Uithof) |  |
+| [15 October 2018 from 15:00 to 17:00](https://www.uu.nl/en/research/research-data-management) | Bucheliusroom UU Library (Uithof) |  |
+| [12 November 2018 from 15:00 to 17:00](https://www.uu.nl/en/research/research-data-management) | Bucheliusroom UU Library (Uithof) |  |
+| [10 December 2018 from 15:00 to 17:00](https://www.uu.nl/en/research/research-data-management) | Bucheliusroom UU Library (Uithof) |  |
 
 
 ## Themes
