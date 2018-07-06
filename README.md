@@ -1,11 +1,11 @@
-# R data café 
+# R data cafe
 
-The R Data Cafe is a community event for R users of the Utrecht University. The goal 
+The R Cafe is a community event for R users of Utrecht University. The goal 
 of the event is to share knowledge about R and help researchers with programming
 problems. The two hours during event is held every month and is open without 
 registration.
 
-This repository contains additional material for the R data café. There are several 
+This repository contains additional material for the R Cafe. There are several 
 exercises and tips in the [exercises folder](/exercises/). 
 
 During each event, an R user demonstrates an interesting package or application of R. 
@@ -14,11 +14,11 @@ The additional material for the demonstrations can be found in the [themes folde
 
 ## Themes
 
-Each R data café has a special theme. The theme is a short presentation or
-demonstration of half an hour. The presentations are given by attendees of the
+Each R Cafe has a special theme. The theme is a short presentation or
+demonstration of (maximum) half an hour. The presentations are given by attendees of the
 cafe. We are always looking for people who want to present something. Please
-send an email to Jonathan de Bruin ([j.debruin1@uu.nl](mailto:j.debruin1@uu.nl)) to request or give a
-presenation.
+send an email to Jonathan de Bruin ([j.debruin1@uu.nl](mailto:j.debruin1@uu.nl)) to request to give a
+presentation.
 
 
 ## Scheduled meetings
