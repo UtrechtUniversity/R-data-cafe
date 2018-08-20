@@ -2,7 +2,7 @@
 
 The R Cafe is a community event for R users of Utrecht University. The goal 
 of the event is to share knowledge about R and help researchers with programming
-problems. The two hours during event is held every month and is open without 
+problems. The meeting lasts 2 hours, is held every month, and is open without 
 registration.
 
 This repository contains additional material for the R Cafe. There are several 
@@ -16,7 +16,7 @@ The additional material for the demonstrations can be found in the [themes folde
 
 Each R Cafe has a special theme. The theme is a short presentation or
 demonstration of (maximum) half an hour. The presentations are given by attendees of the
-cafe. We are always looking for people who want to present something. Please
+Cafe. We are always looking for people who want to present something. Please
 send an email to Jonathan de Bruin ([j.debruin1@uu.nl](mailto:j.debruin1@uu.nl)) to request to give a
 presentation.
 
@@ -68,6 +68,5 @@ presentation.
 
 ## Organisation:
 
-- [Tessa Pronk](https://github.com/TessaPr)
 - [Jonathan de Bruin](https://github.com/J535D165)
 - [Barbara Vreede](https://github.com/bvreede)
