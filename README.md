@@ -24,10 +24,10 @@ presentation.
 ## Scheduled meetings
 | When | Where | Theme |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
-| [10 September 2018 from 15:00 to 17:00](https://www.uu.nl/en/research/research-data-management) | Bucheliusroom UU Library (Uithof) | DESeq2 for RNASeq analysis by Barbara Vreede (UU) |
-| [15 October 2018 from 15:00 to 17:00](https://www.uu.nl/en/research/research-data-management) | Bucheliusroom UU Library (Uithof) |  |
-| [12 November 2018 from 15:00 to 17:00](https://www.uu.nl/en/research/research-data-management) | Bucheliusroom UU Library (Uithof) |  |
-| [10 December 2018 from 15:00 to 17:00](https://www.uu.nl/en/research/research-data-management) | Bucheliusroom UU Library (Uithof) |  |
+| [10 September 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-deseq2-for-rnaseq-analysis) | Bucheliusroom UU Library (Uithof) | DESeq2 for RNASeq analysis by Barbara Vreede (UU) |
+| [15 October 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-5) | Bucheliusroom UU Library (Uithof) |  |
+| [12 November 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-4) | Bucheliusroom UU Library (Uithof) |  |
+| [10 December 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-2) | Bucheliusroom UU Library (Uithof) |  |
 
 
 ## Previous meetings
@@ -36,11 +36,11 @@ presentation.
 | 16 October 2017 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) | [ggplot by Jonathan de Bruin (UU)](themes/ggplot) |
 | 13 November 2017 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) | [Hypothesis testing by Kees Mulder (UU)](themes/hypothesis_testing) |
 | [11 December 2017 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-1) | Bucheliusroom UU Library (Uithof) | ~~Cancelled due to bad weather conditions~~ |
-| [15 Januari 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-2) | Bucheliusroom UU Library (Uithof) | [Regular Expressions by Tessa Pronk (UU)](themes/regular_expressions) |
+| 15 Januari 2018 from 15:00 to 17:00] | Bucheliusroom UU Library (Uithof) | [Regular Expressions by Tessa Pronk (UU)](themes/regular_expressions) |
 | [12 February 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-3) | Bucheliusroom UU Library (Uithof) | [Reading and writing foreign dataformats by Wietze Pasma (UMCU)](themes/data_import_export) |
-| [12 March 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-4) | Bucheliusroom UU Library (Uithof) | [R Markdown by Jonathan de Bruin (UU)](themes/Rmarkdown) |
-| [16 April 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-5) | Bucheliusroom UU Library (Uithof) | JASP by Erik-Jan van Kesteren |
-| [14 May 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-6) | Bucheliusroom UU Library (Uithof) | [Joining data by Jonathan de Bruin (UU)](themes/joining_data) |
+| 12 March 2018 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) | [R Markdown by Jonathan de Bruin (UU)](themes/Rmarkdown) |
+| 16 April 2018 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) | JASP by Erik-Jan van Kesteren |
+| 14 May 2018 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) | [Joining data by Jonathan de Bruin (UU)](themes/joining_data) |
 | [11 June 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-7) | Bucheliusroom UU Library (Uithof) | Meta-analyses by Cathalijn Leenaars (UU) |
 
 
