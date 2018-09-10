@@ -66,6 +66,12 @@ presentation.
 - https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf
 - [R markdown reference](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
 
+## Cheatsheets
+
+There are useful cheatsheets available for R topics like visualisation, string handling and Rmarkdown. You can find the cheatsheets at the website of RStudio (https://www.rstudio.com/resources/cheatsheets/)
+
+<img src="https://www.rstudio.com/wp-content/uploads/2018/08/lubridate.png" width="400">   <img src="https://www.rstudio.com/wp-content/uploads/2018/08/data-transformation.png" width="400">
+
 ## Organisation:
 
 - [Jonathan de Bruin](https://github.com/J535D165)
