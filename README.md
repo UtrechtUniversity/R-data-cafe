@@ -1,6 +1,6 @@
 # R Cafe
 
-The R Cafe is a community event for R users of Utrecht University. The goal 
+The R Cafe is a community event for R users of Utrecht University and UMCU. The goal 
 of the event is to share knowledge about R and help researchers with programming
 problems. The meeting lasts 2 hours, is held every month, and is open without 
 registration.
