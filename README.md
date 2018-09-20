@@ -24,7 +24,6 @@ presentation.
 ## Scheduled meetings
 | When | Where | Theme |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
-| [10 September 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-deseq2-for-rnaseq-analysis) | Bucheliusroom UU Library (Uithof) | DESeq2 for RNASeq analysis by Barbara Vreede (UU) |
 | [15 October 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-5) | Bucheliusroom UU Library (Uithof) |  |
 | [12 November 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-4) | Bucheliusroom UU Library (Uithof) |  |
 | [10 December 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-2) | Bucheliusroom UU Library (Uithof) |  |
@@ -42,6 +41,8 @@ presentation.
 | 16 April 2018 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) | JASP by Erik-Jan van Kesteren |
 | 14 May 2018 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) | [Joining data by Jonathan de Bruin (UU)](themes/joining_data) |
 | [11 June 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-7) | Bucheliusroom UU Library (Uithof) | Meta-analyses by Cathalijn Leenaars (UU) |
+| [10 September 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-deseq2-for-rnaseq-analysis) | Bucheliusroom UU Library (Uithof) | DESeq2 for RNASeq analysis by Barbara Vreede (UU) |
+
 
 
 
