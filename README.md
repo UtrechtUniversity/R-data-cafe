@@ -12,25 +12,24 @@ During each event, an R user demonstrates an interesting package or application 
 The additional material for the demonstrations can be found in the [themes folder](/themes/).
 
 
-## Themes
+## Themes/showcases
 
-Each R Cafe has a special theme. The theme is a short presentation or
-demonstration of (maximum) half an hour. The presentations are given by attendees of the
+Each R Cafe features a short showcase or
+demonstration of (maximum) half an hour. These presentations are given by attendees of the
 Cafe. We are always looking for people who want to present something. Please
 send an email to Jonathan de Bruin ([j.debruin1@uu.nl](mailto:j.debruin1@uu.nl)) to request to give a
 presentation.
 
 
 ## Scheduled meetings
-| When | Where | Theme |
+| When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
-| [15 October 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-5) | Bucheliusroom UU Library (Uithof) |  |
 | [12 November 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-4) | Bucheliusroom UU Library (Uithof) |  |
 | [10 December 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-2) | Bucheliusroom UU Library (Uithof) |  |
 
 
 ## Previous meetings
-| When | Where | Theme |
+| When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
 | 16 October 2017 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) | [ggplot by Jonathan de Bruin (UU)](themes/ggplot) |
 | 13 November 2017 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) | [Hypothesis testing by Kees Mulder (UU)](themes/hypothesis_testing) |
@@ -42,6 +41,7 @@ presentation.
 | 14 May 2018 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) | [Joining data by Jonathan de Bruin (UU)](themes/joining_data) |
 | [11 June 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-7) | Bucheliusroom UU Library (Uithof) | Meta-analyses by Cathalijn Leenaars (UU) |
 | [10 September 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-deseq2-for-rnaseq-analysis) | Bucheliusroom UU Library (Uithof) | DESeq2 for RNASeq analysis by Barbara Vreede (UU) |
+| [15 October 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-5) | Bucheliusroom UU Library (Uithof) | [git and github by Barbara Vreede (UU)](https://github.com/UtrechtUniversity/R-data-cafe/blob/master/themes/20181015_github.pdf) |
 
 
 
