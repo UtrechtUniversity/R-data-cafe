@@ -24,7 +24,7 @@ presentation.
 ## Scheduled meetings
 | When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
-| [12 November 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-4) | Bucheliusroom UU Library (Uithof) |  |
+| [12 November 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-4) | Bucheliusroom UU Library (Uithof) | Shiny apps by Kimberley Lek |
 | [10 December 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-2) | Bucheliusroom UU Library (Uithof) |  |
 | [28 January from 15:00 to 17:00]() | Bucheliusroom UU Library (Uithof) |  |
 | [25 February 2019 from 15:00 to 17:00]() | Bucheliusroom UU Library (Uithof) |  |
