@@ -24,7 +24,7 @@ presentation.
 ## Scheduled meetings
 | When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
-| [10 December 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-2) | Bucheliusroom UU Library (Uithof) |  |
+| [10 December 2018 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-2) | Bucheliusroom UU Library (Uithof) | [Long and wide data](https://github.com/UtrechtUniversity/R-data-cafe/blob/master/themes/presentation_wide_long.pdf) |
 | [28 January 2019 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-3) | Bucheliusroom UU Library (Uithof) |  |
 | [25 February 2019 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-4) | Bucheliusroom UU Library (Uithof) |  |
 | [25 March 2019 from 15:00 to 17:00]() | Bucheliusroom UU Library (Uithof) |  |
