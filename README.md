@@ -32,19 +32,19 @@ presentation.
 ## Previous meetings
 | When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
-| 10 December 2018 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) | [Long and wide data](themes/presentation_wide_long.pdf) by Jonathan de Bruin |
-| 12 November 2018 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) | Shiny apps by Kimberley Lek |
-| 15 October 2018 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) | [git and github](https://github.com/UtrechtUniversity/R-data-cafe/blob/master/themes/20181015_github.pdf) by Barbara Vreede |
-| 10 September 2018 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) | [DESeq2 for RNASeq analysis](https://github.com/UtrechtUniversity/R-data-cafe/blob/master/themes/20180910_deseq2.html) by Barbara Vreede |
-| 11 June 2018 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) | Meta-analyses by Cathalijn Leenaars (UU) |
-| 14 May 2018 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) | [Joining data](themes/joining_data) by Jonathan de Bruin |
-| 16 April 2018 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) | JASP by Erik-Jan van Kesteren |
-| 12 March 2018 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) | [R Markdown by Jonathan de Bruin (UU)](themes/Rmarkdown) |
-| 12 February 2018 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) | [Reading and writing foreign dataformats by Wietze Pasma (UMCU)](themes/data_import_export) |
-| 15 Januari 2018 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) | [Regular Expressions by Tessa Pronk (UU)](themes/regular_expressions) |
-| 11 December 2017 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) | ~~Cancelled due to bad weather conditions~~ |
-| 13 November 2017 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) | [Hypothesis testing by Kees Mulder (UU)](themes/hypothesis_testing) |
-| 16 October 2017 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) | [ggplot by Jonathan de Bruin (UU)](themes/ggplot) |
+| 10 December 2018 | Bucheliusroom UU Library (Uithof) | [Long and wide data](themes/presentation_wide_long.pdf) by Jonathan de Bruin |
+| 12 November 2018 | Bucheliusroom UU Library (Uithof) | Shiny apps by Kimberley Lek |
+| 15 October 2018 | Bucheliusroom UU Library (Uithof) | [git and github](https://github.com/UtrechtUniversity/R-data-cafe/blob/master/themes/20181015_github.pdf) by Barbara Vreede |
+| 10 September 2018 | Bucheliusroom UU Library (Uithof) | [DESeq2 for RNASeq analysis](https://github.com/UtrechtUniversity/R-data-cafe/blob/master/themes/20180910_deseq2.html) by Barbara Vreede |
+| 11 June 2018 | Bucheliusroom UU Library (Uithof) | Meta-analyses by Cathalijn Leenaars (UU) |
+| 14 May 2018 | Bucheliusroom UU Library (Uithof) | [Joining data](themes/joining_data) by Jonathan de Bruin |
+| 16 April 2018 | Bucheliusroom UU Library (Uithof) | JASP by Erik-Jan van Kesteren |
+| 12 March 2018 | Bucheliusroom UU Library (Uithof) | [R Markdown by Jonathan de Bruin (UU)](themes/Rmarkdown) |
+| 12 February 2018 | Bucheliusroom UU Library (Uithof) | [Reading and writing foreign dataformats by Wietze Pasma (UMCU)](themes/data_import_export) |
+| 15 Januari 2018 | Bucheliusroom UU Library (Uithof) | [Regular Expressions by Tessa Pronk (UU)](themes/regular_expressions) |
+| 11 December 2017 | Bucheliusroom UU Library (Uithof) | ~~Cancelled due to bad weather conditions~~ |
+| 13 November 2017 | Bucheliusroom UU Library (Uithof) | [Hypothesis testing by Kees Mulder (UU)](themes/hypothesis_testing) |
+| 16 October 2017 | Bucheliusroom UU Library (Uithof) | [ggplot by Jonathan de Bruin (UU)](themes/ggplot) |
 
 
 
@@ -79,3 +79,6 @@ There are useful cheatsheets available for R topics like visualisation, string h
 
 - [Jonathan de Bruin](https://github.com/J535D165)
 - [Barbara Vreede](https://github.com/bvreede)
+
+## More:
+We organize a monthly course with an introduction to R and data. [Check it out!](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data)
