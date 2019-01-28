@@ -24,14 +24,14 @@ presentation.
 ## Scheduled meetings
 | When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
-| [28 January 2019 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-3) | Bucheliusroom UU Library (Uithof) | [Keeping it togetherR with Purrr, by Marc Teunis](https://github.com/uashogeschoolutrecht/RCafe) |
-| [25 February 2019 from 15:00 to 17:00](https://www.uu.nl/en/events/r-data-cafe-4) | Bucheliusroom UU Library (Uithof) |  |
-| [25 March 2019 from 15:00 to 17:00]() | Bucheliusroom UU Library (Uithof) |  |
+| [25 February 2019 from 15:00 to 17:00](https://www.uu.nl/en/events/r-cafe-3) | Bucheliusroom UU Library (Uithof) |  |
+| [25 March 2019 from 15:00 to 17:00](https://www.uu.nl/en/events/r-cafe-4) | Bucheliusroom UU Library (Uithof) |  |
 
 
 ## Previous meetings
 | When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
+| 28 January 2019 | Bucheliusroom UU Library (Uithof) | [Keeping it togetherR with Purrr](https://github.com/uashogeschoolutrecht/RCafe), by Marc Teunis |
 | 10 December 2018 | Bucheliusroom UU Library (Uithof) | [Long and wide data](themes/presentation_wide_long.pdf) by Jonathan de Bruin |
 | 12 November 2018 | Bucheliusroom UU Library (Uithof) | Shiny apps by Kimberley Lek |
 | 15 October 2018 | Bucheliusroom UU Library (Uithof) | [git and github](https://github.com/UtrechtUniversity/R-data-cafe/blob/master/themes/20181015_github.pdf) by Barbara Vreede |
