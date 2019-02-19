@@ -24,7 +24,7 @@ presentation.
 ## Scheduled meetings
 | When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
-| [25 February 2019 from 15:00 to 17:00](https://www.uu.nl/en/events/r-cafe-3) | Bucheliusroom UU Library (Uithof) | [Heatmaps](themes/heatmaps/heatmaps.md) by Barbara Vreede |
+| [25 February 2019 from 15:00 to 17:00](https://www.uu.nl/en/events/r-cafe-3) | Bucheliusroom UU Library (Uithof) | [Heatmaps](themes/heatmaps) by Barbara Vreede |
 | [25 March 2019 from 15:00 to 17:00](https://www.uu.nl/en/events/r-cafe-4) | Bucheliusroom UU Library (Uithof) |  |
 
 
