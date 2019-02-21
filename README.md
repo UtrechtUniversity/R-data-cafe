@@ -26,6 +26,9 @@ presentation.
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
 | [25 February 2019 from 15:00 to 17:00](https://www.uu.nl/en/events/r-cafe-3) | Bucheliusroom UU Library (Uithof) | [Heatmaps](themes/heatmaps) by Barbara Vreede |
 | [25 March 2019 from 15:00 to 17:00](https://www.uu.nl/en/events/r-cafe-4) | Bucheliusroom UU Library (Uithof) |  |
+| 15 April 2019 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) |  |
+| 20 May 2019 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) |  |
+| 17 June 2019 from 15:00 to 17:00 | Bucheliusroom UU Library (Uithof) |  |
 
 
 ## Previous meetings
