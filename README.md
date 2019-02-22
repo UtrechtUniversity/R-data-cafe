@@ -35,7 +35,7 @@ presentation.
 | When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
 | 28 January 2019 | Bucheliusroom UU Library (Uithof) | [Keeping it togetherR with Purrr](https://github.com/uashogeschoolutrecht/RCafe), by Marc Teunis |
-| 10 December 2018 | Bucheliusroom UU Library (Uithof) | [Long and wide data](themes/presentation_wide_long.pdf) by Jonathan de Bruin |
+| 10 December 2018 | Bucheliusroom UU Library (Uithof) | [Long and wide data](themes/longwide) by Jonathan de Bruin |
 | 12 November 2018 | Bucheliusroom UU Library (Uithof) | Shiny apps by Kimberley Lek |
 | 15 October 2018 | Bucheliusroom UU Library (Uithof) | [git and github](https://github.com/UtrechtUniversity/R-data-cafe/blob/master/themes/20181015_github.pdf) by Barbara Vreede |
 | 10 September 2018 | Bucheliusroom UU Library (Uithof) | [DESeq2 for RNASeq analysis](https://github.com/UtrechtUniversity/R-data-cafe/blob/master/themes/20180910_deseq2.html) by Barbara Vreede |
