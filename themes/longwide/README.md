@@ -8,3 +8,6 @@ to your data when you change the shape of your data frame.
 
 During this showcase, we will explain the ins and outs of long and wide in R!
 
+## Slides
+[presentation_wide_long.pdf](presentation_wide_long.pdf)
+
