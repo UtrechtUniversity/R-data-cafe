@@ -47,4 +47,4 @@ row.names(cellphone) <- c("Ann","Bob","Charlotte","Drew","Elody","Farouk","Georg
                            "Simon","Tammy","Ulf","Vera","Wendy","Xavier","Yvonne","Zach")
 
 # save to a csv for further processing
-write.csv(cellphone,file="surfdrive/Shared/DataCafeR/presentations/heatmaps/cellphone_raw.csv")
+write.csv(cellphone,file="cellphone_raw.csv")
