@@ -1,5 +1,5 @@
 
-##Installing the library and loading
+##Installing the packages and loading libraries
 
 #install.packages("pheatmap")
 library(pheatmap)
