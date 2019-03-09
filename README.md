@@ -81,7 +81,6 @@ There are useful cheatsheets available for R topics like visualisation, string h
 ## Organisation:
 
 - [Jonathan de Bruin](https://github.com/J535D165)
-- [Barbara Vreede](https://github.com/bvreede)
 
 ## More:
-We organize a monthly course with an introduction to R and data. [Check it out!](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data)
+RDM support hosts a monthly course with an introduction to R and data. [Check it out!](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data)
