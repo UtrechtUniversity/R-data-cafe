@@ -1,0 +1,272 @@
+
+
+# ------------------------------------------------------------
+# sections and headers
+# ------------------------------------------------------------
+
+snippet header
+	# `r rstudioapi::getActiveDocumentContext()[["path"]]`
+	# 
+	# Author: ${1:authors}
+	# Project: ${2:project_name}
+	# Creation date: `r Sys.Date()`
+	# Modification date: `r Sys.Date()`
+	# 
+	# Description: ${3:description}
+	#
+	
+	${0}
+
+snippet subsection
+	# --- ${1:title} ---
+	
+	${0}
+
+snippet section
+	# ------------------------------------------------------------------------
+	#     ${1:title}
+	# ------------------------------------------------------------------------
+	
+	${0}
+
+snippet ts
+	`r paste("#", date(), "------------------------------\n")`
+	
+	${0}
+
+
+# ------------------------------------------------------------
+# libraries
+# ------------------------------------------------------------
+
+snippet lib
+	library(${1:package})
+
+snippet req
+	require(${1:package})
+
+snippet src
+	source("${1:file.R}")
+
+snippet libdef "Default libraries"
+	# data manipulation
+	library(tidyverse)
+	library(lubridate)
+	
+	# geo
+	library(sf)
+	library(ggmap)
+	
+	# statistics
+	library(stats)
+	library(survival)
+	
+	# utils
+	library(magrittr)
+	library(parallel)
+	
+	${0}
+
+# ------------------------------------------------------------
+# scripts
+# ------------------------------------------------------------
+
+snippet tidyscript	
+	# `r rstudioapi::getActiveDocumentContext()[["path"]]`
+	# 
+	# Author: Jonathan de Bruin
+	# Project: ${1:project_name}
+	# Creation date: `r Sys.Date()`
+	# Modification date: `r Sys.Date()`
+	# 
+	# Description: ${2:description}
+	#
+	
+	library(tidyverse)
+	library(lubridate)
+	
+	# ------------------------------------------------------------------------
+	#     Read flat data file
+	# ------------------------------------------------------------------------
+	
+	data <- read_csv(${3:input_file})
+	  
+	glimpse(data)
+	  
+	# ------------------------------------------------------------------------
+	#     Analysis
+	# ------------------------------------------------------------------------
+	
+	
+	
+	# ------------------------------------------------------------------------
+	#     Load data to file
+	# ------------------------------------------------------------------------
+	
+	write_csv(data, ${4:output_file})
+
+
+# ------------------------------------------------------------
+# dplyr and tidyr
+# ------------------------------------------------------------
+
+snippet agg
+	${1:data} %>%
+		group_by(${2:vars}) %>%
+		summarise(
+			${3:summarise}
+		)
+		
+	${0}
+	
+	
+# ------------------------------------------------------------
+# stats
+# ------------------------------------------------------------
+
+snippet anova "anova"
+	data.aov <- aov(${1:formula}, data=${2:data})
+	summary(data.aov)
+	
+	${0}
+
+# ------------------------------------------------------------
+# ggplot2
+# ------------------------------------------------------------
+
+snippet gg "ggplot generic"
+	ggplot(${1:data}, aes(${2:aes})) + ${0}
+
+snippet gl "ggplot line"
+	ggplot(${1:data}, aes(${2:x}, ${3:y})) + geom_line()${0}
+
+snippet gp "ggplot point"
+	ggplot(${1:data}, aes(${2:x}, ${3:y})) + geom_point()${0}
+
+snippet gs "ggsave()"
+	ggsave("${1:filename}.pdf", width = ${2:6}, height = ${3:6})${0}
+
+snippet ge "geom_*"
+	geom_${1:point}(${0})
+
+	
+
+# ------------------------------------------------------------
+# default
+# ------------------------------------------------------------
+
+
+snippet ret
+	return(${1:code})
+
+snippet mat
+	matrix(${1:data}, nrow = ${2:rows}, ncol = ${3:cols})
+
+snippet sg
+	setGeneric("${1:generic}", function(${2:x, ...}) {
+		standardGeneric("${1:generic}")
+	})
+
+snippet sm
+	setMethod("${1:generic}", ${2:class}, function(${2:x, ...}) {
+		${0}
+	})
+
+snippet sc
+	setClass("${1:Class}", slots = c(${2:name = "type"}))
+
+snippet if
+	if (${1:condition}) {
+		${0}
+	}
+
+snippet el
+	else {
+		${0}
+	}
+
+snippet ei
+	else if (${1:condition}) {
+		${0}
+	}
+
+snippet fun
+	${1:name} <- function(${2:variables}) {
+		${0}
+	}
+
+snippet for
+	for (${1:variable} in ${2:vector}) {
+		${0}
+	}
+
+snippet while
+	while (${1:condition}) {
+		${0}
+	}
+
+snippet switch
+	switch (${1:object},
+		${2:case} = ${3:action}
+	)
+
+snippet apply
+	apply(${1:array}, ${2:margin}, ${3:...})
+
+snippet lapply
+	lapply(${1:list}, ${2:function})
+
+snippet sapply
+	sapply(${1:list}, ${2:function})
+
+snippet mapply
+	mapply(${1:function}, ${2:...})
+
+snippet tapply
+	tapply(${1:vector}, ${2:index}, ${3:function})
+
+snippet vapply
+	vapply(${1:list}, ${2:function}, FUN.VALUE = ${3:type}, ${4:...})
+
+snippet rapply
+	rapply(${1:list}, ${2:function})
+
+snippet shinyapp
+	library(shiny)
+	
+	ui <- fluidPage(
+	  ${0}
+	)
+	
+	server <- function(input, output, session) {
+	  
+	}
+	
+	shinyApp(ui, server)
+
+
+# ------------------------------------------------------------
+# workshop
+# ------------------------------------------------------------
+
+
+snippet libs "My default libraries"
+	
+	library(tidyverse)
+	library(survival)
+	library(parallel)
+
+
+snippet def "Simple function with print"
+	${1:name} <- function(${2:variables}) {
+		
+		print(${2:variables})
+		
+		${0}
+	}
+
+
+snippet libtidy "Load tidyverse library"
+	# Tested with tidverse v`r packageVersion("tidyverse")`
+	library(tidyverse)
+	${0}
