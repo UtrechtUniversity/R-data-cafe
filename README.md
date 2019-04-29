@@ -24,7 +24,6 @@ presentation.
 ## Scheduled meetings
 | When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
-| [15 April 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/73715) | Bucheliusroom UU Library (Uithof) |  |
 | [20 May 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/73723) | Bucheliusroom UU Library (Uithof) |  |
 | [17 June 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/73729) | Bucheliusroom UU Library (Uithof) |  |
 
@@ -32,6 +31,7 @@ presentation.
 ## Previous meetings
 | When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
+| [15 April 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/73715) | Bucheliusroom UU Library (Uithof) |  |
 | [25 March 2019 from 15:00 to 17:00](https://www.uu.nl/en/events/r-cafe-4) | Bucheliusroom UU Library (Uithof) | [Code snippets in RStudio](themes/snippets) by Jonathan de Bruin |
 | 25 February 2019 | Bucheliusroom UU Library (Uithof) | [Heatmaps](themes/heatmaps) by Barbara Vreede |
 | 28 January 2019 | Bucheliusroom UU Library (Uithof) | [Keeping it togetherR with Purrr](https://github.com/uashogeschoolutrecht/RCafe), by Marc Teunis |
