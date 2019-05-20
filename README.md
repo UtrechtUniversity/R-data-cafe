@@ -24,7 +24,7 @@ presentation.
 ## Scheduled meetings
 | When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
-| [20 May 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/73723) | Bucheliusroom UU Library (Uithof) | Simple Features |
+| [20 May 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/73723) | Bucheliusroom UU Library (Uithof) | Simple Features (themes/simple_features)|
 | [17 June 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/73729) | Bucheliusroom UU Library (Uithof) |  |
 
 
