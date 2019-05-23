@@ -24,13 +24,13 @@ presentation.
 ## Scheduled meetings
 | When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
-| [20 May 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/73723) | Bucheliusroom UU Library (Uithof) | [Simple Features](themes/simple_features)|
 | [17 June 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/73729) | Bucheliusroom UU Library (Uithof) |  |
 
 
 ## Previous meetings
 | When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
+| [20 May 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/73723) | Bucheliusroom UU Library (Uithof) | [Simple Features](themes/simple_features)|
 | [15 April 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/73715) | Bucheliusroom UU Library (Uithof) |  |
 | [25 March 2019 from 15:00 to 17:00](https://www.uu.nl/en/events/r-cafe-4) | Bucheliusroom UU Library (Uithof) | [Code snippets in RStudio](themes/snippets) by Jonathan de Bruin |
 | 25 February 2019 | Bucheliusroom UU Library (Uithof) | [Heatmaps](themes/heatmaps) by Barbara Vreede |
