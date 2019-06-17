@@ -24,7 +24,7 @@ presentation.
 ## Scheduled meetings
 | When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
-| [17 June 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/73729) | Bucheliusroom UU Library (Uithof) | [Machine Learning by Wienand Omta](themes/machine_learning)  |
+| [17 June 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/73729) | Bucheliusroom UU Library (Uithof) | [Machine Learning by Wienand Omta](themes/machine_learning_omta)  |
 
 
 ## Previous meetings
