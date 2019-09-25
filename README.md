@@ -26,7 +26,7 @@ presentation.
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
 | [30 September 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82079) | Bucheliusroom UU Library (Uithof) | -  |
 | [28 October 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82083) | Bucheliusroom UU Library (Uithof) | -  |
-| [15 November 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82091) | Bucheliusroom UU Library (Uithof) | -  |
+| [25 November 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82091) | Bucheliusroom UU Library (Uithof) | -  |
 | [9 December 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82093) | Bucheliusroom UU Library (Uithof) | -  |
 
 
