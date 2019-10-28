@@ -1,0 +1,314 @@
+---
+title: "Text mining - Tweets by Donald Trump"
+author: "R Cafe - Jonathan - j.debruin1@uu.nl"
+date: "10/28/2019"
+output: 
+  beamer_presentation:
+    theme: "AnnArbor"
+    colortheme: "dolphin"
+    fonttheme: "structurebold"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Text Mining
+
+> The process of deriving high-quality information from text. (Wikipedia, 2019)
+
+Applications
+
+- Text categorization
+- Entity extraction
+- Document summarization
+- Sentiment analysis
+
+## Text Mining with R 
+
+Text mining in R is challenging (without external tools).
+
+> We developed the tidytext R package because we were familiar with many methods for data wrangling and visualization, but couldn’t easily apply these same methods to text. (Silge and Robinson 2016)
+
+- Text mining package `tidytext`
+- Book "Text mining with R (Silge and Robinson, 2016)"
+  - www.tidytextmining.com/
+
+## Text Mining with R 
+
+![](images/cover.png)
+
+## Recap: Tidy data 
+
+Tidy data has a specific structure (Wickham 2014):
+
+- Each variable is a column
+- Each observation is a row
+- Each type of observational unit is a table
+
+## Recap: Non-tidy data (iris)
+
+\small
+```{r echo=FALSE}
+head(iris, 10)
+```
+## Recap: Tidy data (iris)
+
+\small
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(tidyr)
+iris_rn = iris %>% mutate(id = row_number())
+gather(iris_rn, "measure", "value", -id, -Species) %>% 
+  arrange(id, desc(measure)) %>% 
+  select(id, Species, measure, value) %>% 
+  head(10)
+```
+
+## Tidy text
+
+> Definition: *tidy text format is a table with **one-token-per-row***
+
+- A token is a meaningful unit of text, such as a word, that we are interested in using for analysis, and tokenization is the process of splitting text into tokens. 
+
+## Packages for text mining
+
+\small
+```{r install, echo=T, message=FALSE, warning=FALSE, results='hide'}
+
+# default tidyverse packages
+library(tidyverse)
+library(lubridate)
+
+# text mining related
+library(tidytext)
+library(textdata)
+library(wordcloud)
+```
+
+
+## Tweets by Donald Trump - load data
+
+- http://trumptwitterarchive.com/
+- https://github.com/mkearney/trumptweets/
+
+\small
+```{r}
+
+tweets_trump <- read_csv(
+  "data/trumptweets-1515775693.csv"
+)
+```
+## Tweets by Donald Trump - preview
+
+\small
+```{r explore1, echo = TRUE}
+
+head(tweets_trump)
+```
+
+## Tweets by Donald Trump - timeline
+
+\scriptsize
+```{r fig.height=2.5, fig.width=5, message=FALSE, warning=FALSE}
+tweets_trump %>% 
+  ggplot(aes(created_at)) + 
+  geom_histogram() 
+```
+
+
+## Tweets by Donald Trump - tokenizing & tidy text
+
+\scriptsize
+```{r}
+unnest_tokens(tweets_trump, word, text)
+```
+
+## Tweets by Donald Trump - tokenizing & tidy text
+
+\scriptsize
+```{r}
+(tweets_trump_tokens <- unnest_tokens(tweets_trump, word, text, token="tweets"))
+```
+## Tweets by Donald Trump - timeline 'fake'
+
+\scriptsize
+```{r fig.height=2.5, fig.width=5, message=FALSE, warning=FALSE}
+tweets_trump_tokens %>% 
+  filter(word == "fake") %>% 
+  ggplot(aes(created_at)) + 
+  geom_histogram() 
+```
+
+## Tweets by Donald Trump - Most common words
+
+Use `count()`, a function from the `dplyr` package!
+
+\scriptsize
+```{r}
+tweets_trump_tokens %>% 
+  count(word, sort = TRUE) %>% 
+  head(10)
+```
+
+## Tweets by Donald Trump - Filter stopwords
+
+Use `anti_join()`, a function from the `dplyr` package!
+
+\scriptsize
+```{r stopwords}
+data(stop_words)
+
+tweets_trump_tokens %>% anti_join(stop_words, by="word")
+```
+
+## Tweets by Donald Trump - Filter stopwords
+
+\scriptsize
+```{r}
+tweets_trump_tokens %>% 
+  anti_join(stop_words, by="word") %>% 
+  count(word, sort = TRUE) %>% 
+  head(10)
+```
+
+## Tweets by Donald Trump - Filter stopwords
+
+\small
+```{r eval=FALSE}
+# top 20 non-stop words
+tweets_trump_tokens %>% 
+  anti_join(stop_words, by="word") %>% 
+  count(word, sort = TRUE) %>%
+  head(20) %>%
+  
+  # trick to reorder factor (for plotting purposes)
+  mutate(word = reorder(word, n)) %>%
+  
+  # create plot with ggplot
+  ggplot(aes(word, n)) +
+    geom_col() +
+    xlab(NULL) +
+    coord_flip()
+```
+
+## Tweets by Donald Trump - Filter stopwords
+
+```{r echo=FALSE}
+# top 20 non-stop words
+tweets_trump_tokens %>% 
+  anti_join(stop_words, by="word") %>% 
+  count(word, sort = TRUE) %>%
+  head(20) %>%
+  
+  # trick to reorder factor (for plotting purposes)
+  mutate(word = reorder(word, n)) %>%
+  
+  # create plot with ggplot
+  ggplot(aes(word, n)) +
+    geom_col() +
+    xlab(NULL) +
+    coord_flip()
+```
+
+
+## Tweets by Donald Trump - Word cloud
+
+\scriptsize
+```{r fig.height=2.5, fig.width=5, eval=FALSE}
+library(wordcloud)
+
+tweets_trump_tokens %>% 
+  anti_join(stop_words, by="word") %>% 
+  count(word, sort = TRUE) %>%
+  # apply wordcloud to our data 
+  with(wordcloud(word, n, scale=c(2, 1), max.words = 50))
+```
+## Tweets by Donald Trump - Word cloud
+
+\scriptsize
+```{r echo=FALSE}
+library(wordcloud)
+
+tweets_trump_tokens %>% 
+  anti_join(stop_words, by="word") %>% 
+  count(word, sort = TRUE) %>%
+  # apply wordcloud to our data 
+  with(wordcloud(word, n, scale=c(2, 1), max.words = 50))
+```
+
+## Sentiment analysis
+
+> Systematically identify, extract, quantify, and study affective states and subjective information. (Wikipedia, 2019)
+
+## Sentiment libraries
+
+- Avialable in package `textdata`.
+
+\small
+```{r}
+get_sentiments("afinn")
+```
+
+## Sentiment libraries
+
+- Not every English word is in the lexicons because many English words are pretty neutral. 
+
+\small
+```{r}
+get_sentiments("bing")
+```
+
+## Sentiment libraries
+
+- It is important to keep in mind that these methods do not take into account qualifiers before a word, such as in “no good” or “not true”
+
+\small
+```{r}
+get_sentiments("nrc")
+```
+
+## Tweets by Donald Trump - Sentiment analysis [bing]
+
+\scriptsize
+```{r}
+(tweet_sentiment <- tweets_trump_tokens %>%
+   # append score/value to each word (if and only if available)
+   left_join(get_sentiments("bing"), by="word") %>%
+   count(created_at, status_id, sentiment) %>% 
+   # untidy the dataset to compute the sentiment
+   spread(sentiment, n, fill = 0) %>%
+   # sentiment is number of positive words - negative words
+   mutate(sentiment = positive - negative))
+```
+
+## Tweets by Donald Trump - Sentiment analysis [bing]
+
+\scriptsize
+```{r fig.height=2, fig.width=5}
+tweet_sentiment %>% 
+  group_by(month=floor_date(created_at, "month")) %>%
+  summarize(sentiment=mean(sentiment)) %>% 
+  ggplot(aes(month, sentiment)) + 
+    geom_line()
+```
+
+## Tweets by Donald Trump - Sentiment analysis [afinn]
+
+\scriptsize
+```{r fig.height=2, fig.width=5}
+tweets_trump_tokens %>%
+  left_join(get_sentiments("afinn"), by="word") %>%
+  mutate(value = replace_na(value, 0)) %>%
+  group_by(month=floor_date(created_at, "month")) %>%
+  summarize(sentiment=mean(value)) %>% 
+  ggplot(aes(month, sentiment)) + 
+    geom_line()
+```
+
+
+## Questions? 
+
+Thanks for attending. 
+
+R Cafe 15:00 - 17:00
