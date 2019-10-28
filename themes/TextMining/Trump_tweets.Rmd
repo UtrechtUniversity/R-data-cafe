@@ -91,12 +91,13 @@ library(wordcloud)
 
 - http://trumptwitterarchive.com/
 - https://github.com/mkearney/trumptweets/
+- https://github.com/UtrechtUniversity/R-data-cafe/
 
 \small
 ```{r}
 
 tweets_trump <- read_csv(
-  "data/trumptweets-1515775693.csv"
+  "https://raw.githubusercontent.com/UtrechtUniversity/R-data-cafe/master/themes/TextMining/data/trumptweets-1515775693.csv"
 )
 ```
 ## Tweets by Donald Trump - preview
