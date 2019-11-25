@@ -24,7 +24,7 @@ presentation.
 ## Scheduled meetings
 | When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
-| [25 November 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82091) | Bucheliusroom UU Library (Uithof) | Text classification in R (part 2) |
+| [25 November 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82091) | Bucheliusroom UU Library (Uithof) | [Text classification in R (part 2)](themes/TextClassification) |
 | [9 December 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82093) | Bucheliusroom UU Library (Uithof) | RMarkdown first; A workflow for easy R package development by Marc Teunis |
 
 
@@ -32,7 +32,7 @@ presentation.
 ## Previous meetings
 | When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
-| [28 October 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82083) | Bucheliusroom UU Library (Uithof) | Text mining in R (part 1) |
+| [28 October 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82083) | Bucheliusroom UU Library (Uithof) | [Text mining in R (part 1)](themes/TextMining) |
 | [30 September 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82079) | Bucheliusroom UU Library (Uithof) | -  |
 | [17 June 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/73729) | Bucheliusroom UU Library (Uithof) | [Machine Learning by Wienand Omta](themes/machine_learning_omta)  |
 | [20 May 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/73723) | Bucheliusroom UU Library (Uithof) | [Simple Features](themes/simple_features)|
