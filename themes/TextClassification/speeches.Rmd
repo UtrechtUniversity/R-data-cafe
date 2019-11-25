@@ -1,0 +1,352 @@
+---
+title: "Text classification - Speeches by Obama and Trump"
+author: "R Cafe - Jonathan - j.debruin1@uu.nl"
+date: "11/25/2019"
+output: 
+  beamer_presentation:
+    theme: "AnnArbor"
+    colortheme: "dolphin"
+    fonttheme: "structurebold"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Text Classification
+
+> Text classification is the process of assigning text into organized groups.
+
+Applications
+
+- Customer service
+- Language Detection
+- Spam filters
+- ...
+
+## Text Mining with R 
+
+Text mining in R is challenging (without external tools).
+
+> We developed the tidytext R package because we were familiar with many methods for data wrangling and visualization, but couldn’t easily apply these same methods to text. (Silge and Robinson 2016)
+
+- Text mining package `tidytext`
+- Book "Text mining with R (Silge and Robinson, 2016)"
+  - www.tidytextmining.com/
+
+## Text Mining with R 
+
+![](images/cover.png)
+
+## Recap: Tidy data 
+
+Tidy data has a specific structure (Wickham 2014):
+
+- Each variable is a column
+- Each observation is a row
+- Each type of observational unit is a table
+
+## Recap: Non-tidy data (iris)
+
+\small
+```{r echo=FALSE}
+head(iris, 10)
+```
+## Recap: Tidy data (iris)
+
+\small
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(tidyr)
+iris_rn = iris %>% mutate(id = row_number())
+gather(iris_rn, "measure", "value", -id, -Species) %>% 
+  arrange(id, desc(measure)) %>% 
+  select(id, Species, measure, value) %>% 
+  head(10)
+```
+
+## Tidy text
+
+> Definition: *tidy text format is a table with **one-token-per-row***
+
+- A token is a meaningful unit of text, such as a word, that we are interested in using for analysis, and tokenization is the process of splitting text into tokens. 
+
+## Packages for text classification
+
+\small
+```{r install, echo=T, message=FALSE, warning=FALSE, results='hide'}
+
+# default tidyverse packages
+library(tidyverse)
+library(lubridate)
+
+# text mining related
+library(tidytext)
+library(tm)
+library(textdata)
+library(wordcloud)
+
+# machine learning
+library(caret)
+library(randomForest)
+```
+
+
+## The President's Weekly Address
+
+- Example: https://www.presidency.ucsb.edu/documents/the-presidents-weekly-address-431
+
+\small
+
+My fellow Americans, the heartbreaking devastation and suffering caused by Hurricane Harvey has profoundly affected our entire Nation. Many homes and communities have been destroyed, many lives have been upended, and tragically, some have lost their lives in this catastrophic storm. We pray for the victims and their families and all of those who have been displaced from their homes.
+
+At this very moment, heroic efforts continue to keep safe those threatened by this natural disaster. I want to say a special word of thanks to our amazing first responders: our police and law enforcement officers, firefighters, Coast Guard, National Guard, EMS, doctors, nurses, hospital workers, and volunteers who have traveled from all across the country. Thousands of people have come together to prevent loss of life and ensure safety, and we are incredibly grateful for their courage, their professionalism, and their sacrifice. They are an inspiration to all of us.
+
+
+## The President's Weekly Address - read data
+
+- Run `data_downloader.R`
+
+\small
+```{r}
+
+president_speeches <- read_csv(
+  "data/speeches.csv", 
+  col_types = cols(name="f")
+) %>% 
+  mutate(date=mdy(date))
+```
+
+## The President's Weekly Address - preview
+
+\scriptsize
+```{r explore1, echo = TRUE}
+head(president_speeches)
+```
+
+## The President's Weekly Address
+
+\small
+```{r fig.height=2, fig.width=3, message=FALSE, warning=FALSE}
+president_speeches %>% 
+  ggplot() + 
+  geom_histogram(aes(name), stat="count")
+```
+
+
+
+## The President's Weekly Address - tokenizing & tidy text
+
+\scriptsize
+```{r}
+(president_tokens <- unnest_tokens(president_speeches, word, speech))
+```
+
+
+## The President's Weekly Address - Word cloud
+
+\scriptsize
+```{r eval=FALSE, message=FALSE, warning=FALSE}
+library(wordcloud)
+
+president_tokens %>% 
+  filter(name=="Donald J. Trump") %>%
+  anti_join(stop_words, by="word") %>% 
+  count(word, sort = TRUE) %>%
+  with(
+    wordcloud(
+      word, n, scale=c(5, 1), 
+      max.words = 100, 
+      random.order=FALSE, 
+      rot.per=0.3,
+      colors='blue')
+  )
+
+```
+
+## The President's Weekly Address - Word cloud Trump
+
+\scriptsize
+```{r echo=FALSE, fig.height=12, fig.width=12, message=FALSE, warning=FALSE}
+library(wordcloud)
+
+president_tokens %>% 
+  filter(name=="Donald J. Trump") %>%
+  anti_join(stop_words, by="word") %>% 
+  count(word, sort = TRUE) %>%
+  with(
+    wordcloud(
+      word, n, scale=c(5, 1), 
+      max.words = 100, 
+      random.order=FALSE, 
+      rot.per=0.3,
+      colors='blue')
+  )
+
+```
+
+## The President's Weekly Address - Word cloud Obama
+
+\scriptsize
+```{r echo=FALSE, fig.height=12, fig.width=12, message=FALSE, warning=FALSE}
+library(wordcloud)
+
+president_tokens %>% 
+  filter(name=="Barack Obama") %>%
+  anti_join(stop_words, by="word") %>% 
+  count(word, sort = TRUE) %>%
+  with(
+    wordcloud(
+      word, n, scale=c(5, 1), 
+      max.words = 100, 
+      random.order=FALSE, 
+      rot.per=0.3,
+      colors='red')
+  )
+
+```
+
+
+## Term frequency
+
+- **Term Frequency (tf)** - A measure of how important a word is.
+- *How frequently a word occurs in a document. There are words in a document, however, that occur many times but may not be important; in English, these are probably words like “the”, “is”, “of”, and so forth. We might take the approach of adding words like these to a list of stop words and removing them before analysis, but it is possible that some of these words might be more important in some documents than others. (Text Mining with R, 2019)*
+
+## The President's Weekly Address - Term frequency
+
+\scriptsize
+```{r}
+president_words <- president_tokens %>% count(id, name, word, sort=TRUE)
+
+total_words <- president_words %>% 
+  group_by(id) %>% 
+  summarize(total = sum(n))
+
+(president_words <- left_join(president_words, total_words, by = "id"))
+```
+
+## Term frequency - Zipf's distribution
+
+- Long-tailed distribution (Zipf's)
+
+\scriptsize
+```{r fig.height=2, fig.width=3, message=FALSE, warning=FALSE}
+ggplot(president_words, aes(n/total)) +
+  geom_histogram(bins=50)
+```
+
+<!-- In fact, those types of long-tailed distributions are so common in any given corpus of natural language (like a book, or a lot of text from a website, or spoken words) that the relationship between the frequency that a word is used and its rank has been the subject of study; a classic version of this relationship is called Zipf’s law, after George Zipf, a 20th century American linguist. -->
+
+## Inverse Document Frequency
+
+- **Inverse Document Frequency (IDF)** - IDF decreases the weight for commonly used words and increases the weight for words that are not used very much in a collection of documents. 
+- *The statistic **tf-idf** is intended to measure how important a word is to a document in a collection (or corpus) of documents, for example, to one novel in a collection of novels or to one website in a collection of websites. (Text Mining with R, 2019)*
+
+## The President's Weekly Address - Inverse Document Frequency
+
+\scriptsize
+```{r}
+(president_words <- president_words %>%
+  bind_tf_idf(word, id, n))
+```
+
+
+## The President's Weekly Address - TF-IDF
+
+\scriptsize
+```{r fig.height=2, fig.width=3, message=FALSE, warning=FALSE}
+president_words %>%
+  arrange(desc(tf_idf)) %>%
+  mutate(word = factor(word, levels = rev(unique(word)))) %>% 
+  top_n(15) %>% 
+  ggplot(aes(word, tf_idf)) +
+    geom_col() +
+    labs(x = NULL, y = "tf-idf") +
+    coord_flip()
+```
+
+
+## from tidy to DocumentTermMatrix
+
+Tidy text format is not suitable for machine learning.
+
+\scriptsize
+```{r}
+library(tm)
+
+(president_tfidf = president_words %>%
+  
+  arrange(id) %>%
+  
+  # cast to document term matrix
+  cast_dtm(id, word, tf_idf) %>%
+  
+  # remove sparse terms
+  removeSparseTerms(0.9))
+
+```
+
+
+## Split dataset into train and test set
+
+\scriptsize
+```{r}
+library(caret)
+
+set.seed(535)
+
+trainIndex <- createDataPartition(president_speeches$name, p = .6, 
+                                  list = FALSE, 
+                                  times = 1)
+
+presidentTrain <- president_tfidf[ trainIndex,]
+presidentTest  <- president_tfidf[-trainIndex,]
+
+presidentTrain
+```
+
+## Machine Learning - Random Forest
+
+- Fit Random Forest on the train data
+
+\scriptsize
+```{r message=FALSE, warning=FALSE}
+
+library(randomForest)
+
+(classifier <- randomForest(
+  x = as.data.frame(as.matrix(president_tfidf[trainIndex,])), 
+  y = as.factor(president_speeches[trainIndex,]$name),
+  nTree = 10))
+```
+
+## Machine Learning - Random Forest
+
+- Fit Random Forest on the train data
+
+\scriptsize
+```{r}
+(president_pred <- predict(
+  classifier, 
+  newdata = as.data.frame(as.matrix(president_tfidf[-trainIndex,]))
+))
+```
+
+
+## Validation - Confusion matrix
+
+- https://en.wikipedia.org/wiki/Confusion_matrix
+
+\small
+```{r}
+(cm <- table(
+  president_speeches[-trainIndex,]$name, 
+  president_pred
+))
+```
+
+## Questions? 
+
+Thanks for attending. 
+
+R Cafe 15:00 - 17:00
