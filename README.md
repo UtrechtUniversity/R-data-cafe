@@ -27,7 +27,7 @@ presentation.
 | When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
 | [25 November 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82091) | Bucheliusroom UU Library (Uithof) | [Text classification in R (part 2)](themes/TextClassification) |
-| [9 December 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82093) | Bucheliusroom UU Library (Uithof) | RMarkdown first; A workflow for easy R package development by Marc Teunis |
+| [9 December 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82093) | Bucheliusroom UU Library (Uithof) | [Start with RMarkdown;A gentle slide (show) into R-package development](themes/start_with_rmd) |
 
 
 
@@ -78,6 +78,15 @@ presentation.
 **Documenting**
 - https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf
 - [R markdown reference](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
+
+**R Packages**
+- https://emilyriederer.netlify.com/post/rmarkdown-driven-development/
+- https://github.com/jennybc/pkg-dev-tutorial
+- https://r4ds.had.co.nz/
+- http://r-pkgs.had.co.nz/
+- [Rtools](https://cran.r-project.org/bin/windows/Rtools/)
+- [Functions](https://richmedia.lse.ac.uk/methodologyinstitute/20170814_ExpressYourselfUsingR.mp4)
+- ["here! here!" - github link J. Bryan](https://github.com/jennybc/here_here)
 
 ## Cheatsheets
 
