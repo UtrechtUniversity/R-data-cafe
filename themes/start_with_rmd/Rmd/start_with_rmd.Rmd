@@ -1,0 +1,417 @@
+---
+title: "Start with RMarkdown"
+subtitle: "A gentle slide (show) into R-package development"
+author: "Marc A.T. Teunis"
+date: "`r Sys.time()`"
+always_allow_html: true
+output: 
+  beamer_presentation:
+    theme: "AnnArbor"
+    colortheme: "dolphin"
+    fonttheme: "structurebold"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      error = FALSE,
+                      message = FALSE)
+```
+
+## Contents
+
+ 1. Writing functions
+ 1. "Start with Rmd" - What is it?
+ 1. Function documentation - `{roxygen2}`
+ 1. Demo - Building a package `{usethis}`, `{devtools}`
+ 
+## Prerequisites
+
+ - Windows: Install [Rtools](https://cran.r-project.org/bin/windows/Rtools/)
+ - Clone Materials from:
+ https://github.com/UtrechtUniversity/R-data-cafe/start_with_rmd
+ - Install packages:
+
+```{r}
+library(tidyverse)
+library(here)
+library(usethis)
+library(devtools)
+library(reprex)
+```
+
+## Intro
+
+ **Discuss with your neighbour (2 min.)**
+ 
+ 1. When was the last time you wrote a function in R? 
+ 1. What did it do?
+
+## R Markdown
+
+ - An 'R' implementation of the simple Markdown mark-up language 
+ - Combines prose with R code and output
+ - Many output formats
+ - Accepts html, css, LaTeX
+ - Is generally a good starting point when setting up an analysis
+ - As it turns out: it is also a good starting point for creating an R-package
+
+## Why start with RMarkdown (for an R-package)
+
+ 1. RMarkdown enforces more elaborate documentation (narratives + code + output)
+ 1. Analysis follows a natural flow
+ 1. Functions are put into context of application
+ 1. Information, analysis and functions are collected in one place
+ 1. When creating a package, you already have a vignette (documentation) 
+
+## Why build an R-package
+
+ 1. R-package is the natural 'communication' vessel for R-code
+ 1. Documentation increases reproducibility (future you will be grateful)
+ 1. R-packages are the natural habitat for R functions
+ 1. Do not repeat yourself (code + data + documentation all in one place without redundancy)
+ 
+## Imagine this data
+
+```{r}
+data_dengue <- read_csv(
+  here::here(
+    "data-raw", "dengue_data.csv"), 
+  comment = "#")
+
+data_dengue[c(1:5), c(7:11)]  
+```
+
+## Discuss with your neighbour!
+What does this part do?
+```
+here::here(
+    "data-raw",
+    "D010",
+    "dengue_data.csv"
+  )
+```
+
+## Why is it handy?
+
+see ["here! here!" - github link J. Bryan](https://github.com/jennybc/here_here)
+
+__Please do no do this in your code, anywhere:__ 
+
+```
+data_dengue <- read_csv(
+  "D:/r_projects/start_with_rmd/data-raw/dengue_data.csv", 
+  comment = "#")
+```
+
+Use the `{here}` package instead
+
+## What is typical about the missing values?
+
+```{r}
+data_dengue[c(1:5), c(7:11)] 
+```
+
+_[Reference: Hadley Wickham - link](https://richmedia.lse.ac.uk/methodologyinstitute/20170814_ExpressYourselfUsingR.mp4)_
+
+## We could solve it like this
+```{r, eval=FALSE}
+data_dengue$Venezuela[
+  data_dengue$Venezuela ==  999] <- NA
+data_dengue$Venezuela[
+  data_dengue$Argentina ==  "missing"] <- NA
+data_dengue$Philippines[
+  data_dengue$Philippines == 999] <- NA
+data_dengue$Philippines[
+  data_dengue$Philippines == 990] <- NA
+```
+
+## Discuss with your neighbour
+
+Why is this syntax a bad idea?
+```
+data_dengue$Philippines[
+  data_dengue$Philippines == 990] <- NA
+```
+
+## DRY - Don't Repeat Yourself
+
+ 1. When entering the 'same' code twice, it is time to start writing a function
+ 1. Copying & pasting is error prone
+ 1. Extend this to files, workflows and data-copies
+ 1. Keep everything that belongs together in the same place:
+ 
+ **"Start with Rmd"**
+ 
+ `RStudio Project --> RMarkdown file --> R-package`
+
+## Functions in R
+
+```
+descriptive_function_name <- function(arguments, ...){
+ if(some_condition_on_argument{ 
+   message("message that condition meets argument(s)")
+ } else {
+   warning/stop("condition does NOT meet criteria ")
+ }
+ 
+ * some operations on the function arguments
+ * some more calculations, 
+ * maybe reshaping the object or looping or transforming
+ * ... = arguments that can be passed to functions 
+ used inside a function
+
+ return(whatever_the_function_returns)
+}
+```
+
+## Putting the DRY principle to practice
+The function below replaces certain values (`na_string`) 
+in a vector for `NA`
+
+```{r}
+replace_x_for_na <- function(x, na_string){
+  x[x %in% na_string] <- NA # %in% is a special for match
+  return(x)
+}
+```
+
+## Apply this function to one column of our `data_dengue`
+
+```{r}
+data_dengue$Venezuela[1:4]
+replace_x_for_na(x = data_dengue$Venezuela, 
+                 na_string = c(99, 990:999, "missing", "mising")) %>%
+  as.numeric() %>%
+  head(4)
+```
+
+## Apply our function to whole `data_dengue` dataframe
+
+```{r}
+data_dengue_new <- data_dengue %>%
+  purrr::map_df(
+  replace_x_for_na, 
+  na_string = c(99, 990:999, "mising", "missing"))
+data_dengue_new[c(1:5), c(7:11)]
+```
+
+
+## Function Documentation
+Let's assume we want to write a bit of documentation on how to use our `replace_x_for_na()` function
+
+## Documentation for functions
+__How it is done in R-packages__
+Let's look at the documentation for the function `mean`
+```{r, eval=FALSE}
+?mean
+```
+
+## Writing you own documentation: Roxygen Comments
+To construct this formal documentation structure we can use Roxygen Comments (`#'`)
+
+```
+#' @title Change values into formal NA
+#' 
+#' @param x A vector containing non-formal NA values 
+#' that need to be replaced by formal NA
+#' @param na_string A vector of values indicating 
+#' which values need to be replaced by NA
+#' @return A mutated vector, with NA as replacements
+#' @example <a reprex goes here>
+#' @export
+
+<function definition>
+
+```
+
+## Steps to build an R-package (from Rmd)
+
+ 1. Create a package project `usethis::create_package(<pkg_name>)`
+ 1. Extract functions from your Rmd file into the ~/R folder
+ 1. Write/Check documentation
+ 1. Add other package infrastructure
+ 1. Add dependencies
+ 1. Build documentation and vignettes
+ 1. Write tests --> Test package
+ 1. Check package
+ 1. Build package (source/binary)
+ 1. Publish package on Github and/or CRAN/Bioconductor
+ 
+## Step 1: create an R-package RStudio project
+Many steps of building an R-package are supported by the `{usethis}` package
+
+ 1. This will create a backbone for an R-package called 'bumblebee' in the root and will start up the RStudio project in a separate session
+ 1. Here we will put this package inside an existing RStudio project, usually this is a bad idea (but now we can more easily monitor whats going on)
+ 
+```{r, eval=FALSE}
+usethis::create_package(path = "bumblebee")
+```
+
+## Populating the /bumblebee/R/ folder
+
+**Execute the following steps inside the ~/bumblebee project**
+
+ 1. Create a backbone function .R script for the function
+  `replace_x_for_na()`
+ with `usethis::use_r("replace_x_for_na")`
+ 1. Copy the function definitions + added Roxygen documentation to this .R file
+
+## Generate documentation for the functions and the package
+Run the following commands inside ~/bumblebee at the Console
+```{r, eval=FALSE}
+## create an .R file
+usethis::use_r("replace_x_for_na")
+```
+
+copy function and documentation to this R/replace_x_for_na.R file
+```
+#' @title Change values into formal NA
+#' 
+#' @param x A vector containing non-formal NA values 
+#' that need to be replaced by formal NA
+#' @param na_string A vector of values indicating 
+#' which values need to be replaced by NA
+#' @return A mutated vector, with NA as replacements
+#' @example <a reprex goes here>
+#' @export
+replace_x_for_na <- function(x, na_string){
+  x[x %in% na_string] <- NA # %in% is a special for match
+  return(x)
+}
+
+```
+
+## Add general package documentation
+```{r, eval=FALSE}
+usethis::use_package_doc()
+## build documentation for functions
+devtools::document()
+```
+
+## Add dependencies
+```{r, eval=FALSE}
+## add the pipe es dependency so you can use it in you function defenitions 
+usethis::use_pipe()
+## add ggplot2 as a dependency
+usethis::use_package("ggplot2")
+usethis::use_package("dplyr")
+usethis::use_package("readr")
+usethis::use_package("here")
+## update documentation
+devtools::document()
+
+```
+
+## Add a licence
+Here we will use CC-BY as an example
+```{r, eval=FALSE}
+usethis::use_ccby_license("Your Name")
+```
+
+## Add a dataset to a package
+If you want to add a dataset, the raw-data can be put inside the ~/bumblebee/data-raw folder. The script that generates the dataset also goes inside the data-raw folder.
+```{r, eval=FALSE}
+usethis::use_data_raw()
+
+## put the raw dataset inside 'data-raw' 
+## copy the code below to the DATASET.R file:
+DATASET <- readr::read_csv(
+  here::here(
+    "data-raw", "dengue_data.csv"), 
+  comment = "#")
+
+DATASET <- DATASET %>%
+  purrr::map_df(
+  bumblebee::replace_x_for_na, 
+  na_string = c(99, 990:999, "mising", "missing")) %>%
+  dplyr::gather(Argentina:Venezuela, 
+                key = "country", 
+                value = "cases")
+usethis::use_data(DATASET, overwrite = TRUE)
+```
+
+## Building the documentation
+```{r, eval=FALSE}
+devtools::document()
+```
+
+## Building the package
+
+**Click 'Build' --> 'Install & Restart'**
+
+## Add a vignette
+To add full documentation:
+```{r, eval=FALSE}
+usethis::use_vignette("bumblebee-demo")
+```
+You can then copy chunks from the current Rmd to this vignette. Of course you can leave out the function definitions because these will be avaialable from the package now.
+
+## Rendering the vignette
+```{r, eval=FALSE}
+devtools::build_vignettes(pkg = "../bumblebee")
+## load all to view the vignette
+devtools::load_all(".")
+## view the vignette
+browseVignettes(package = "bumblebee")
+```
+
+# ADVANCED
+
+## Writing tests with `testthat()`
+Tests are important because:
+
+ 1. Things break
+ 1. Versions change (R and Dependencies)
+ 1. Inputs change
+ 
+## How to start with tests
+Again: `{usethis}` makes it easy to start 
+```{r, eval=FALSE}
+usethis::use_test("replace_x_for_na")
+## test for datset
+## test example
+vec <- c(999, 998, "missing")
+result <- bumblebee::replace_x_for_na(vec, na_string = c(999, 998, "missing"))
+
+testthat::test_that("replace_x_for_na works!", {
+  testthat::expect_equal(result, c(NA_character_,
+                                   NA_character_,
+                                   NA_character_))
+})
+```
+
+## Test coverage
+To see what still needs to be done ;-)
+```{r, eval=FALSE}
+usethis::use_travis()
+usethis::use_coverage()
+covr::report()
+```
+
+## Building and Checking package
+Click:
+
+ - 'Build' --> 
+ - 'More' --> 
+ - 'Clean & Rebuild' -->
+ - 'Test Package' -->
+ - 'Check Package' -->
+ - 'Build Source Package' (Linux / McOS / Windows)
+ - 'Build Binary Package' (Windows only)
+
+## Integration with Git/Github
+
+Initialize an empty repo in Github -->
+
+In Terminal execute:
+```
+echo "# bumblebee" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:<gihub_username>/bumblebee.git
+git push -u origin master
+```
+Commit changes locally --> push changes to remote
+
