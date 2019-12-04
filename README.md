@@ -2,7 +2,8 @@
 
 [![rcafe_logo.png](rcafe_logo.png)](https://github.com/UtrechtUniversity/R-data-cafe/)
 
-The R Cafe is a community event for R users of Utrecht University and UMCU. The goal 
+The R Cafe is a community event for R users of Utrecht University, UMCU and HU 
+(University of Applied Sciences Utrecht). The goal 
 of the event is to share knowledge about R and help researchers with programming
 problems. The meeting lasts 2 hours, is held every month, and is open without 
 registration.
@@ -26,14 +27,14 @@ presentation.
 ## Scheduled meetings
 | When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
-| [25 November 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82091) | Bucheliusroom UU Library (Uithof) | [Text classification in R (part 2)](themes/TextClassification) |
-| [9 December 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82093) | Bucheliusroom UU Library (Uithof) | [Start with RMarkdown;A gentle slide (show) into R-package development](themes/start_with_rmd) |
+| [9 December 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82093) | Bucheliusroom UU Library (Uithof) | [Start with RMarkdown;A gentle slide (show) into R-package development](themes/start_with_rmd) (Start at 15:30, 45 minutes) |
 
 
 
 ## Previous meetings
 | When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
+| [25 November 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82091) | Bucheliusroom UU Library (Uithof) | [Text classification in R (part 2)](themes/TextClassification) |
 | [28 October 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82083) | Bucheliusroom UU Library (Uithof) | [Text mining in R (part 1)](themes/TextMining) |
 | [30 September 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82079) | Bucheliusroom UU Library (Uithof) | -  |
 | [17 June 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/73729) | Bucheliusroom UU Library (Uithof) | [Machine Learning by Wienand Omta](themes/machine_learning_omta)  |
