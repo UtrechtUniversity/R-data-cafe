@@ -310,7 +310,11 @@ usethis::use_ccby_license("Your Name")
 ```
 
 ## Add a dataset to a package
-If you want to add a dataset, the raw-data can be put inside the ~/bumblebee/data-raw folder. The script that generates the dataset also goes inside the data-raw folder.
+If you want to add a dataset:
+
+_The raw-data has to be put inside the ~/bumblebee/data-raw folder._ 
+
+The script that generates the dataset also goes inside the data-raw folder.
 ```{r, eval=FALSE}
 usethis::use_data_raw()
 
@@ -318,17 +322,18 @@ usethis::use_data_raw()
 ## copy the code below to the DATASET.R file:
 DATASET <- readr::read_csv(
   here::here(
-    "data-raw", "dengue_data.csv"), 
+    "data-raw", "dengue_data.csv"),
   comment = "#")
 
 DATASET <- DATASET %>%
   purrr::map_df(
-  bumblebee::replace_x_for_na, 
-  na_string = c(99, 990:999, "mising", "missing")) %>%
-  dplyr::gather(Argentina:Venezuela, 
-                key = "country", 
+    bumblebee::replace_x_for_na,
+    na_string = c(99, 990:999, "mising", "missing")) %>%
+  tidyr::gather(Argentina:Venezuela,
+                key = "country",
                 value = "cases")
 usethis::use_data(DATASET, overwrite = TRUE)
+
 ```
 
 ## Building the documentation
