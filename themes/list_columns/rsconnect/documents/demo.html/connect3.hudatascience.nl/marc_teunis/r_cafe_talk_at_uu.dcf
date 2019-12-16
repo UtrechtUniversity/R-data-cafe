@@ -1,0 +1,12 @@
+name: r_cafe_talk_at_uu
+title: r_cafe_talk_at_uu
+username: marc_teunis
+account: marc_teunis
+server: connect3.hudatascience.nl
+hostUrl: http://connect3.hudatascience.nl:81/__api__
+appId: 2
+bundleId: 2
+url: http://connect3.hudatascience.nl:81/content/2/
+when: 1550156754.2773
+asMultiple: FALSE
+asStatic: TRUE

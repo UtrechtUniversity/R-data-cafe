@@ -1,0 +1,718 @@
+---
+title: "How to keep it togetheR"
+author: "Marc A.T. Teunis, Ph.D."
+date: "`r Sys.Date()`"
+output:
+  ioslides_presentation:
+    highlight: pygments
+    widescreen: yes
+subtitle: List-columns in a dataframe
+resource_files:
+- data/CISID_pertussis_10082018.csv
+- images/open_compaq.jpg
+- images/pepper.jpg
+- R/do_tidy_pertussis.R
+- resources.html
+- resources.Rmd
+- README.md
+---
+
+<style>
+
+.footer {
+    font-size: 16pt;
+    color: Black;
+    font-family: 'Calibri'
+    content: attr(label);
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align:center;
+    bottom: 10px;
+    line-height: 1.9;
+    display: block;
+}
+
+</style>
+
+<div class="footer" style="margin-top;font-size:120%;"> 
+Using list-columns - R Cafe UU, 28 January 2019 </div>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      warning = FALSE, 
+                      message = FALSE, 
+                      error = FALSE, 
+                      fig.width = 4,
+                      fig.height = 4)
+```
+
+```{r, root, include=FALSE, eval=FALSE}
+require("rprojroot") || utils::install.packages("rprojroot")
+library(rprojroot)
+root <- find_root_file(criterion = is_rstudio_project)
+
+```
+
+## Who am I?
+
+ - Background in (Medical) Biology
+ - PhD in (Psycho)Neuroimmunology (WKZ - UMCU)
+ - Validation and development of in-vitro methods for toxicology
+ - **SpaRked my interest in R**
+
+## What is R to me?
+
+ - Every day go-to for analytics of very different types of data
+ - Statistical analysis (validation / in vitro studies)
+ - Genomics (`DESeq2`, `edgeR`, `limma`, `Glimma` )
+ - Microbiome analysis (`Bioconductor` & `qiime2`)
+ - Interactivity with `Shiny` and `flexdashboards`
+ - Reproducibility (`rmarkdown`, )
+
+
+## Contents
+
+List-columns and managing many models with `{tidyverse}`
+
+ 1. Recap: Dataframes, Lists and Iterations
+ 2. `map()` functions from the `{purrr}` package
+ 3. Using list-colums (in a dataframe)
+ 4. Implementing list-columns to create models and graphs
+
+ PART I: FIRST STEPS (for today) 
+ 
+ PART II: MORE LIST-COLUMNS (do-it-yourself) 
+
+# PART I: FIRST STEPS (slide 7-)
+
+Clone the repository from:
+
+`https://github.com/uashogeschoolutrecht/rcafe` or login
+
+`http://rcafe.hudatascience.nl` with user credentials on little piece of paper
+
+## Packages
+The packages used in this tutorial
+```{r, packages}
+library(tidyverse)
+library(modelr)
+library(lubridate)
+library(broom)
+library(purrr)
+library(repurrrsive)
+```
+
+## Dataframes and Lists are recursive vectors
+```{r, recursive_vectors}
+table <- tribble(
+  ~ a, ~b, ~c, ~d, 
+  "x", 1, TRUE, 1.45, 
+  "y", 2, FALSE, 3.88,
+  "z", 3, TRUE, 33.5
+  ) 
+table
+```
+
+## Checking characteristics of `table`
+```{r}
+is.vector(table)
+is.vector(table$a)
+is.atomic(table)
+is.atomic(table$c)
+is.recursive(table)
+class(table)
+typeof(table)
+## So dataframes are a special kind of lists?!? 
+```
+
+## Column containing a list (in a dataframe)
+```{r}
+table <- tribble(
+  ~ a,      ~b,      ~c,       ~d,     ~e, 
+  "x",      1,       TRUE,     1.45,   numbers = 1:10,
+  "y",      2,       FALSE,    3.88,   lgl = c(TRUE, FALSE),
+  "z",      3,       TRUE,     33.5,   city = "Utrecht"   
+  ) 
+table
+```
+
+## Iterate over a dataframe
+```{r}
+map(table, class)
+```
+
+## Iterate over a list
+```{r}
+map(table$e, nchar)
+```
+
+# Case data
+
+Let's switch to RStudio and open the file: 
+
+`demo.Rmd`
+
+## Data origin
+
+Whooping cough outbreaks from The World Health Organization
+
+http://data.euro.who.int/cisid/?TabID=463987
+
+See for variable and data collection also: 
+
+http://ecdc.europa.eu/sites/portal/files/documents/Pertussis%20AER.pdf
+
+for more details see file: "load_data.R"
+
+## Load the tidy version of the dataset
+The code for cleaning and tidying the data is in the file "./load_data.R"
+```{r, read_data}
+source(file = file.path("load_data.R"))
+  
+```
+
+## Inspect data
+```{r, inspect_data}
+head(pertussis_data_tidy, n = 2)
+names(pertussis_data_tidy)
+```
+
+## For which years is there data recorded?
+```{r, echo=FALSE, fig.width=4, fig.height=4}
+pertussis_data_tidy %>%
+  ggplot(aes(x = year, y = annual_pertussis_cases)) +
+  geom_point(aes(position = "jitter" ))
+```
+
+## Log10 cases by year, `colour = country`
+```{r, echo=FALSE, fig.width=4, fig.height=4}
+pertussis_data_tidy %>%
+  na.omit() %>%
+  group_by(country) %>%
+  ggplot(aes(x = year,
+             y = log10(annual_pertussis_cases))) +
+  geom_line(aes(group = country, colour = country))  +
+  theme_bw() +
+  theme(legend.position="none") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+This is a messy graph indeed!!
+
+## Only the Netherlands
+```{r, echo=FALSE, fig.width=4, fig.height=4}
+## only Netherlands data
+netherlands_data <- pertussis_data_tidy %>%
+  dplyr::filter(country == "Netherlands") %>%
+  na.omit() ## for sake of simplicity we remove the years that are missing
+
+netherlands_data %>%
+  ggplot(aes(x = year,
+             y = annual_pertussis_cases)) + 
+  geom_line() +
+  geom_point(colour = "red") +
+  ggtitle("The Netherlands; Whooping Cough cases")
+```
+
+## Plot linear model for NL
+```{r, echo=FALSE, fig.width=4, fig.height=4}
+netherlands_model <- lm(
+  annual_pertussis_cases ~ year, 
+  data = netherlands_data %>%
+    na.omit()
+)
+## plot model for NL
+
+netherlands_data %>%
+  na.omit() %>%
+  add_predictions(netherlands_model) %>%
+  ggplot(aes(x = year, 
+             y = pred)) +
+  geom_line() +
+  ggtitle("Linear trend") +
+  geom_point(
+    data = netherlands_data,
+    aes(x = year, 
+    y = annual_pertussis_cases),
+    colour = "red") +
+  geom_line(
+    data = netherlands_data %>% na.omit, ## note the pipe to remove NA
+    aes(x = year, 
+        y = annual_pertussis_cases),
+    colour = "red",
+    linetype = "dashed"
+)
+
+```
+
+## How can we apply this to `every` country 
+without doing the above `r pertussis_data_tidy$country %>% as_factor() %>% levels() %>% length()` times.
+
+## Split the data by country and apply the model or graphing code to each subset
+
+ - In fact, data for each country is a subset of the full dataset
+ - We can subset the original dataframe into seperate dataframes for each country 
+
+## Using list-columns to keep track of your results and models
+```{r}
+nested_pertussis <- pertussis_data_tidy %>%
+  na.omit() %>%
+  dplyr::select(country, year, annual_pertussis_cases) %>%
+  group_by(country) %>%
+    nest() 
+
+head(nested_pertussis, 2) ## you see the grouping by country
+head(nested_pertussis$data[[1]], 2) ## you get the individual country df
+```
+
+## Label (name) the idividual elements of the list column 
+```{r, eval=FALSE} 
+names(nested_pertussis$data) <- nested_pertussis$country 
+```
+ 
+## Linear model for each country
+First we write a function that creates the linear model for  one country
+```{r}
+country_model_lm <- function(df){
+  model <- lm(
+    annual_pertussis_cases ~ year, 
+    data = df)
+  return(model)
+}
+```
+
+## Iterate the model function over nested `$data` with `purrr::map()`
+```{r}
+models <- map(
+  nested_pertussis$data, country_model_lm
+  )
+head(models, 2)
+```
+
+## Extracting information from models the tidy way
+```{r}
+# models[[1]] %>% summary 
+models[[1]] %>% broom::glance()
+models[[1]] %>% broom::glance() %>%
+  pluck("adj.r.squared")
+```
+
+## Keep it togetheR
+ - We have the models now
+ - Better to store them together with the data
+ - By using `dplyr::mutate()` 
+ 
+## Create an additional list-column on the basis of an existing one
+```{r}
+nested_pertussis <- nested_pertussis %>%
+  mutate(models_lm = map(data, country_model_lm))
+# View(nested_pertussis)
+head(nested_pertussis, 2)
+```
+
+## Add model summaries as a list column
+```{r}
+nested_pertussis <- nested_pertussis %>%
+  mutate(models_lm_summary = map(models_lm, summary))
+# View(nested_pertussis)
+```
+
+## Extracting information
+```{r}
+nested_pertussis <- nested_pertussis %>%
+  mutate(params_lm =  map(models_lm, broom::glance)) %>%
+  mutate(p_value = map(params_lm, pluck, "p.value"))
+
+nested_pertussis$params_lm[[1]]
+nested_pertussis$p_value[[1]] %>% round(6)
+
+```
+
+## Adding residuals to all the models
+```{r}
+nested_pertussis <- nested_pertussis %>% 
+  mutate(
+    resids = map2(data, models_lm, add_residuals)
+  )
+```
+
+## `map2()`
+
+ - What type of arguments does the function `map2()` take?
+ - How would you find more information?
+
+## Unnest the residuals
+```{r}
+resids <- nested_pertussis %>%
+  unnest(resids)
+head(resids, 2)
+```
+
+## Plotting all residuals for each country
+```{r}
+plot_resids <- function(resids){
+  
+  plot <- resids %>% 
+  ggplot(aes(year, resid)) +
+    geom_line() + 
+    geom_smooth(se = FALSE) +
+    theme_bw() +
+    theme(legend.position="none") +
+    theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+  return(plot)
+}
+
+
+```
+
+## Nest all plots inside a new list column
+```{r, fig.width=4, fig.height=4}
+nested_pertussis <- nested_pertussis %>%
+  mutate(resids_plot = map(resids, plot_resids))
+
+## name alements in the list-column
+names(nested_pertussis$resids_plot) <- nested_pertussis$country
+
+## show one plot
+nested_pertussis$resids_plot$Belarus
+```
+
+## What can we conclude from these graphs?
+```{r, fig.width=3, fig.height=3}
+nested_pertussis$resids_plot$Belgium
+nested_pertussis$resids_plot$Armenia
+```
+
+## Learn more?
+
+'Managing many models with R' by Hadley Wickham - Lecture
+https://www.youtube.com/watch?v=rz3_FDVt9eg
+
+'R for Data Science' by Garret Grolemund & Hadley Wickham
+https://r4ds.had.co.nz/
+Especially chapters:
+21 - https://r4ds.had.co.nz/iteration.html
+25 - https://r4ds.had.co.nz/many-models.html
+
+Study part II below on your own...
+
+##
+```{r, dpi=40, echo=FALSE}
+knitr::include_graphics(path = file.path("images",
+                                         "pepper.jpg"))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+# PART II; Extracting more information from a list column 
+
+***ADVANCED***
+
+For another day...
+
+## Looking at quantative statistical measures for model quality
+```{r}
+r_squared <- nested_pertussis %>% 
+  mutate(glance = map(models_lm, broom::glance)) %>% 
+  unnest(glance, drop = TRUE) %>%
+  select(country, r.squared, AIC, BIC) %>%
+  arrange(r.squared)
+```
+
+## Plotting r.sqared values
+```{r}
+r_squared %>%
+  ggplot(aes(x = reorder(as_factor(country), r.squared),
+             y = r.squared)) +
+  geom_point() +
+  coord_flip() +
+  ylab("R-squared") +
+  xlab("Countries") + 
+  geom_point(data = filter(r_squared, r.squared <= 0.25), colour = "red")
+```
+
+## Plotting pertussis cases for countries with low r.squared over time
+ 1. Filter countries with `r.squared` <= 0.25
+ 2. Put  countries in vector
+ 3. Plot data
+
+## Step 1
+```{r}
+low_r_squared <- r_squared %>%
+  dplyr::filter(r.squared <= 0.25) %>%
+  dplyr::select(country) 
+low_r_squared <- low_r_squared$country
+```
+
+## Step 2
+```{r}
+low_r_squared_nested <- nested_pertussis %>%
+  dplyr::filter(country %in% low_r_squared) %>%
+  select(country, data) %>%
+  unnest()
+```
+
+## Step 3
+```{r}
+low_r_squared_nested %>%
+  ggplot(aes(x =year, y = annual_pertussis_cases)) +
+  geom_line(aes(group = country, color = country)) +
+    theme_bw() +
+  theme(legend.position="none") +
+  facet_wrap( ~ country, scales = "free") +
+ theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+What is happening with the pertussis vaccination grade over the past 8 years? 
+
+## Store ggplot2 objects in a list-column
+ 1. Create a function that makes the plot
+ 3. Test function on single dataframe
+ 2. Apply the function using `mutate()` and `map()` to all dataframes or models
+ 
+```{r}
+## isolate one dataframe to test function
+df <- nested_pertussis$data[[1]]
+plot_country <- function(df){
+  
+  df %>%
+    ggplot(aes(x = year,
+           y = annual_pertussis_cases)) +
+    geom_line() +
+    geom_smooth() +
+    ylab("Annual cases")
+
+}
+
+## test function
+plot_country(df = df)
+```
+
+## Apply plotting function to nested data
+```{r}
+nested_pertussis <- nested_pertussis %>%
+  mutate(plots_cases_over_time = map(data, 
+                                     plot_country))
+
+```
+
+## Add countries as names to nest-column
+```{r}
+names(nested_pertussis$plots_cases_over_time) <- 
+  c(nested_pertussis$country)
+
+nested_pertussis$plots_cases_over_time[1]
+```
+
+## Pull out "The Netherlands"
+```{r}
+nested_pertussis$plots_cases_over_time$Netherlands
+```
+
+## Plotting a panel of 4 graphs
+```{r, echo=FALSE}
+grid <- cowplot::plot_grid(
+  nested_pertussis$plots_cases_over_time$Armenia, 
+  nested_pertussis$plots_cases_over_time$Austria,
+  nested_pertussis$plots_cases_over_time$Ukraine,
+  nested_pertussis$plots_cases_over_time$Netherlands, 
+  labels = c("Armenia", "Austria", "Ukraine", "Netherlands"),
+  scale = 0.7, hjust = c(-0.7, -0.8, -0.8, -0.5))
+grid
+```
+
+## Literature
+For some background on the pattern we are seeing
+
+ - https://www.scientificamerican.com/article/why-whooping-cough-vaccines-are-wearing-off/
+ - http://outbreaknewstoday.com/pertussis-cases-up-significantly-in-the-eu-netherlands-and-uk-worst-hit-55315/
+
+
+## Exploring many more models
+Let's add a quadratic model in the mix. Assume we want to explore non-linear relationships in this dataset
+```{r}
+non_linear_model <- function(df, model_params){
+  
+  nl_model <- lm(
+    annual_pertussis_cases ~ poly(year, 
+                                  model_params),
+                 data = df)
+  
+  return(nl_model)
+}
+```
+
+## Creating a safe version of this function
+```{r}
+safe_non_linear <- purrr::safely(non_linear_model)
+## apply test:
+df = nested_pertussis$data[[1]]
+
+test_non_linear <-  df %>% non_linear_model(df = .,
+                                            model_params = 2)
+```
+
+## Test function on one country
+```{r}
+test_non_linear %>% broom::glance()
+```
+
+## Apply model to all countries 
+We rerun the steps above to add this new model and new graphs to the nested dataframe
+
+Add new model to the nested table
+```{r}
+nested_pertussis <- nested_pertussis %>%
+  mutate(models_nl_2 = map(data, safe_non_linear, 
+                          model_params = 2))
+  
+nested_pertussis$models_nl_2 <- transpose(nested_pertussis$models_nl_2)
+```
+
+## Set names to elements in the list-column
+To be able to `pluck()` by name later
+```{r}
+names(nested_pertussis$models_nl_2$result) <- nested_pertussis$country
+```
+
+## Pluck results in new list-column
+```{r}
+nested_pertussis$models_nl_2$result
+
+nested_pertussis <- nested_pertussis %>%
+  mutate(statistics_nl = pluck(models_nl_2, "result"))
+
+nested_pertussis$statistics_nl[[1]]
+
+```
+
+## Tidy the list-column with `{broom}`
+```{r}
+nested_pertussis <- nested_pertussis %>%
+  mutate(parameters_nl = map(statistics_nl, glance))
+```
+
+
+## Looking at quantative statistical measures for model quality
+```{r}
+r_squared_nl <- nested_pertussis %>%
+  select(country, parameters_nl) %>%
+  unnest()
+```
+
+## Plotting r.sqared values
+```{r, echo=FALSE}
+r_squared %>%
+  ggplot(aes(
+    x = reorder(as_factor(country), r.squared),
+    y = r.squared
+  )) +
+  geom_point() +
+  ylab("Countries") +
+  geom_point(data = filter(
+    r_squared,
+    r.squared <= 0.25
+  ), colour = "red") +
+  geom_point(
+    data = r_squared_nl,
+    aes(
+      x = reorder(as_factor(country), r.squared),
+      y = r.squared
+    ), colour = "purple",
+    shape = 21, size = 3
+  ) +
+  theme_bw() +
+  xlab("Country") +
+  ylab("R.squared") +
+  coord_flip() +
+  geom_point(data = r_squared_nl %>%
+               dplyr::filter(country == "Ireland" |
+                             country == "Belgium"), 
+             colour = "blue", shape = 22, size = 5)
+
+
+
+```
+
+## Let's examine two models for two countries where the non-linear did and did not not improve the R.squared: Ireland (improved) and Belgium (not-improved)  
+```{r}
+
+x <- nested_pertussis %>%
+  select(country,
+         data, 
+         models_lm,
+         statistics_nl) %>%
+  gather(models_lm:statistics_nl, key = "models", value = "model_params") %>%
+ print()  
+```
+
+## Remove 'empty model'
+```{r}
+ind <- x$model_params == "NULL"
+#ind <- x$data == "NULL"
+x <- x[!ind, ]
+```
+
+## Add prediction-list column
+```{r}
+predictions <- x %>%
+#  filter(country == "Czech Republic") %>%
+  mutate(predictions = map2(data, model_params, add_predictions,
+         var = "annual_pertussis_cases")) %>%
+  filter(country == "Ireland" | 
+         country == "Belgium") %>%
+  select(country, data, predictions)
+
+```
+
+## Set names
+```{r}
+
+names(predictions$predictions) <- predictions$country
+```
+
+## Belgium
+```{r}
+nested_pertussis$plots_cases_over_time$Belgium +
+  geom_line(data = predictions$predictions[[1]], colour = "red", size = 2) +
+  
+  geom_line(data = predictions$predictions[[3]], colour = "green", size = 2) 
+```  
+
+## Ireland
+```{r}
+nested_pertussis$plots_cases_over_time$Ireland+
+  geom_line(data = predictions$predictions[[2]], colour = "red", size = 2) +
+  
+  geom_line(data = predictions$predictions[[4]], colour = "green", size = 2) 
+```
+
+
+## Disclaimer & Licence
+
+_The work in this presentation has been adapted from many sources as mentioned in slide 'Credits'. For a full reference list see the 'REFERENCES.txt' document in the github repo 
+https://www.github.com/usashogeschoolutrecht/surf_research_bootcamp_2018
+
+The work presented here may be shared, remixed or adapted as long as the original references and the authors of this document are mentioned in the redistribution: CC BY-SA
+
+
+## Credits
+
+Much of this material has been derived in one way or the other from the work of Hadley Wickham and Garret Grolemund and many others. For a more elaborate reference list see the REFERENCES.txt file in the project root.
+
+Thanks to Hadley & Garret for writing the book "R for Data Science" http://r4ds.had.co.nz/ and for their work in general to innovate the R world.
+
+Work on integration of Git/Github with R/RStudio is thoroughly and wit-fully documented by Jenny Brian. I also very much appreciate her work on the use of RMarkdown. See also:
+
+https://github.com/jennybc/happy-git-with-r & http://stat545.com/block007_first-use-rmarkdown.html 

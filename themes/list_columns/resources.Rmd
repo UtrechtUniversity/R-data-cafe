@@ -1,0 +1,55 @@
+---
+title: "Resources and credits"
+author: "Teunis, Marc A.T."
+date: "13-7-2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Credits
+
+For this course materials have been adapted from:
+ 
+  - Wickham and Grolemund, "R for Data Science", 2017, O'Reily
+  - Field et. al., 2015, "Discovering Statistics Using R", Sage Publications Ltd.
+  
+## Resources:
+
+### Youtube
+ - https://www.youtube.com/watch?v=rz3_FDVt9eg 
+ - https://www.youtube.com/watch?v=go5Au01Jrvs
+ - https://www.youtube.com/watch?v=7UlWJWfZO9M
+ - https://www.youtube.com/watch?v=GyNqlOjhPCQ
+ - https://www.youtube.com/watch?v=1GmQ5BdAhG4
+ 
+### R-bloggers
+
+ - https://www.r-bloggers.com/how-to-learn-r-2/
+ - https://digitheadslabnotebook.blogspot.com/2011/06/drawing-heatmaps-in-r.html?m=1
+ 
+
+### Bioconductor
+ 
+ - http://bioconductor.org/install/
+ - http://bioconductor.org/help/package-vignettes/
+ - http://bioconductor.org/packages/release/BiocViews.html#___Workflow
+
+### Cheatsheets
+
+ - https://www.rstudio.com/resources/cheatsheets/
+ - https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
+ - https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf
+ - https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf
+
+### Books 
+
+ - http://r4ds.had.co.nz/
+ - https://www.tidytextmining.com/
+ 
+### Github
+
+ - https://github.com/jennybc
+ - https://github.com/hadley

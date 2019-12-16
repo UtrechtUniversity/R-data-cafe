@@ -1,0 +1,12 @@
+name: list_culumns_demo
+title: list_culumns_demo
+username: marc_teunis
+account: marc_teunis
+server: connect3.hudatascience.nl
+hostUrl: http://connect3.hudatascience.nl:81/__api__
+appId: 3
+bundleId: 7
+url: http://connect3.hudatascience.nl:81/content/3/
+when: 1550158948.675
+asMultiple: FALSE
+asStatic: FALSE
