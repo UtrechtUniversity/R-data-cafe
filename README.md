@@ -37,7 +37,7 @@ presentation.
 ## Previous meetings
 | When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
-| [9 December 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82093) | Bucheliusroom UU Library (Uithof) | [Start with RMarkdown;A gentle slide (show) into R-package development](themes/start_with_rmd) (Start at 15:30, 45 minutes) |
+| [9 December 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82093) | Bucheliusroom UU Library (Uithof) | [Start with RMarkdown;A gentle slide (show) into R-package development](themes/start_with_rmd) by Marc Teunis |
 | [25 November 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82091) | Bucheliusroom UU Library (Uithof) | [Text classification in R (part 2)](themes/TextClassification) |
 | [28 October 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82083) | Bucheliusroom UU Library (Uithof) | [Text mining in R (part 1)](themes/TextMining) |
 | [30 September 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82079) | Bucheliusroom UU Library (Uithof) | -  |
