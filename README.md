@@ -23,17 +23,21 @@ Cafe. We are always looking for people who want to present something. Please
 send an email to Jonathan de Bruin ([j.debruin1@uu.nl](mailto:j.debruin1@uu.nl)) to request to give a
 presentation.
 
-
 ## Scheduled meetings
 | When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
-| [9 December 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82093) | Bucheliusroom UU Library (Uithof) | [Start with RMarkdown;A gentle slide (show) into R-package development](themes/start_with_rmd) (Start at 15:30, 45 minutes) |
+| [19 February 2020 from 15:00 to 17:00](https://www.uu.nl/en/node/89771) :exclamation: Wednesday :exclamation: | Bucheliusroom UU Library (Uithof) | [Deep Learning in R](themes/start_with_rmd) by [Ayoub Bagheri](https://www.uu.nl/staff/ABagheri)(Start at 15:30, 30 minutes) |
+| [23 March 2020 from 15:00 to 17:00](https://www.uu.nl/en/node/90435) | Bucheliusroom UU Library (Uithof) |  |
+| [20 April 2020 from 15:00 to 17:00](https://www.uu.nl/en/node/90439) | Bucheliusroom UU Library (Uithof) |  |
+| [18 May 2020 from 15:00 to 17:00](https://www.uu.nl/en/node/90443) | Bucheliusroom UU Library (Uithof) |  |
+| [15 June 2020 from 15:00 to 17:00](https://www.uu.nl/en/node/90447) | Bucheliusroom UU Library (Uithof) |  |
 
 
 
 ## Previous meetings
 | When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
+| [9 December 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82093) | Bucheliusroom UU Library (Uithof) | [Start with RMarkdown;A gentle slide (show) into R-package development](themes/start_with_rmd) (Start at 15:30, 45 minutes) |
 | [25 November 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82091) | Bucheliusroom UU Library (Uithof) | [Text classification in R (part 2)](themes/TextClassification) |
 | [28 October 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82083) | Bucheliusroom UU Library (Uithof) | [Text mining in R (part 1)](themes/TextMining) |
 | [30 September 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82079) | Bucheliusroom UU Library (Uithof) | -  |
