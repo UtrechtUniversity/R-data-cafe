@@ -38,11 +38,11 @@ presentation.
 | When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
 | [9 December 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82093) | Bucheliusroom UU Library (Uithof) | [Start with RMarkdown;A gentle slide (show) into R-package development](themes/start_with_rmd) by Marc Teunis |
-| [25 November 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82091) | Bucheliusroom UU Library (Uithof) | [Text classification in R (part 2)](themes/TextClassification) |
-| [28 October 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82083) | Bucheliusroom UU Library (Uithof) | [Text mining in R (part 1)](themes/TextMining) |
+| [25 November 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82091) | Bucheliusroom UU Library (Uithof) | [Text classification in R (part 2)](themes/TextClassification) by Jonathan de Bruin |
+| [28 October 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82083) | Bucheliusroom UU Library (Uithof) | [Text mining in R (part 1)](themes/TextMining) by Jonathan de Bruin |
 | [30 September 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/82079) | Bucheliusroom UU Library (Uithof) | -  |
-| [17 June 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/73729) | Bucheliusroom UU Library (Uithof) | [Machine Learning by Wienand Omta](themes/machine_learning_omta)  |
-| [20 May 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/73723) | Bucheliusroom UU Library (Uithof) | [Simple Features](themes/simple_features)|
+| [17 June 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/73729) | Bucheliusroom UU Library (Uithof) | [Machine Learning by Wienand Omta](themes/machine_learning_omta) by Wienand Omta |
+| [20 May 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/73723) | Bucheliusroom UU Library (Uithof) | [Simple Features](themes/simple_features) by Jonathan de Bruin |
 | [15 April 2019 from 15:00 to 17:00](https://www.uu.nl/en/node/73715) | Bucheliusroom UU Library (Uithof) |  |
 | [25 March 2019 from 15:00 to 17:00](https://www.uu.nl/en/events/r-cafe-4) | Bucheliusroom UU Library (Uithof) | [Code snippets in RStudio](themes/snippets) by Jonathan de Bruin |
 | 25 February 2019 | Bucheliusroom UU Library (Uithof) | [Heatmaps](themes/heatmaps) by Barbara Vreede |
