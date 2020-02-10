@@ -26,7 +26,7 @@ presentation.
 ## Scheduled meetings
 | When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
-| [19 February 2020 from 15:00 to 17:00](https://www.uu.nl/en/node/89771) :exclamation: Wednesday :exclamation: | Bucheliusroom UU Library (Uithof) | [Deep Learning in R](themes/start_with_rmd) by [Ayoub Bagheri](https://www.uu.nl/staff/ABagheri)(Start at 15:30, 30 minutes) |
+| [19 February 2020 from 15:00 to 17:00](https://www.uu.nl/en/node/89771) :exclamation: Wednesday :exclamation: | Bucheliusroom UU Library (Uithof) | Deep Learning in R by [Ayoub Bagheri](https://www.uu.nl/staff/ABagheri)(Start at 15:30, 30 minutes) |
 | [23 March 2020 from 15:00 to 17:00](https://www.uu.nl/en/node/90435) | Bucheliusroom UU Library (Uithof) |  |
 | [20 April 2020 from 15:00 to 17:00](https://www.uu.nl/en/node/90439) | Bucheliusroom UU Library (Uithof) |  |
 | [18 May 2020 from 15:00 to 17:00](https://www.uu.nl/en/node/90443) | Bucheliusroom UU Library (Uithof) |  |
