@@ -26,7 +26,7 @@ presentation.
 ## Scheduled meetings
 | When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
-| [23 March 2020 from 15:00 to 17:00](https://www.uu.nl/en/node/90435) | Bucheliusroom UU Library (Uithof) | TBA by [Jeroen Ooms](https://github.com/jeroen) |
+| ~[23 March 2020 from 15:00 to 17:00](https://www.uu.nl/en/node/90435)~ | Bucheliusroom UU Library (Uithof) | CANCEL -> Coronavirus |
 | [20 April 2020 from 15:00 to 17:00](https://www.uu.nl/en/node/90439) | Bucheliusroom UU Library (Uithof) |  |
 | [18 May 2020 from 15:00 to 17:00](https://www.uu.nl/en/node/90443) | Bucheliusroom UU Library (Uithof) |  |
 | [15 June 2020 from 15:00 to 17:00](https://www.uu.nl/en/node/90447) | Bucheliusroom UU Library (Uithof) |  |
