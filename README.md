@@ -1,5 +1,10 @@
 # R Cafe
 
+
+:exclamation::exclamation: No R Cafe due to COVID-19 outbreak :exclamation::exclamation: 
+
+:question: Are you stuck on an R problem or do you want to share your R code? Feel free to drop a message at [j.debruin1@uu.nl](mailto:j.debruin1@uu.nl).
+
 [![rcafe_logo.png](rcafe_logo.png)](https://github.com/UtrechtUniversity/R-data-cafe/)
 
 The R Cafe is a community event for R users of Utrecht University, UMCU and HU 
@@ -24,12 +29,17 @@ send an email to Jonathan de Bruin ([j.debruin1@uu.nl](mailto:j.debruin1@uu.nl))
 presentation.
 
 ## Scheduled meetings
+
+:exclamation::exclamation: No R Cafe due to COVID-19 outbreak :exclamation::exclamation: 
+
+:question: Are you stuck on an R problem or do you want to share your R code? Feel free to drop a message at [j.debruin1@uu.nl](mailto:j.debruin1@uu.nl).
+
 | When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
 | ~[23 March 2020 from 15:00 to 17:00](https://www.uu.nl/en/node/90435)~ | Bucheliusroom UU Library (Uithof) | CANCEL -> Coronavirus |
-| [20 April 2020 from 15:00 to 17:00](https://www.uu.nl/en/node/90439) | Bucheliusroom UU Library (Uithof) |  |
-| [18 May 2020 from 15:00 to 17:00](https://www.uu.nl/en/node/90443) | Bucheliusroom UU Library (Uithof) |  |
-| [15 June 2020 from 15:00 to 17:00](https://www.uu.nl/en/node/90447) | Bucheliusroom UU Library (Uithof) |  |
+| [20 April 2020 from 15:00 to 17:00](https://www.uu.nl/en/node/90439) | Bucheliusroom UU Library (Uithof) | CANCEL -> Coronavirus |
+| [18 May 2020 from 15:00 to 17:00](https://www.uu.nl/en/node/90443) | Bucheliusroom UU Library (Uithof) | CANCEL -> Coronavirus |
+| [15 June 2020 from 15:00 to 17:00](https://www.uu.nl/en/node/90447) | Bucheliusroom UU Library (Uithof) | CANCEL -> Coronavirus |
 
 
 
