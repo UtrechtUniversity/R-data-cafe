@@ -1,10 +1,5 @@
 # R Cafe
 
-
-:exclamation::exclamation: No R Cafe due to COVID-19 outbreak :exclamation::exclamation: 
-
-:question: Are you stuck on an R problem or do you want to share your R code? Feel free to drop a message at [j.debruin1@uu.nl](mailto:j.debruin1@uu.nl).
-
 [![rcafe_logo.png](rcafe_logo.png)](https://github.com/UtrechtUniversity/R-data-cafe/)
 
 The R Cafe is a community event for R users of Utrecht University, UMCU and HU 
@@ -111,7 +106,7 @@ There are useful cheatsheets available for R topics like visualisation, string h
 
 ## Organisation:
 
-- [Jonathan de Bruin](https://github.com/J535D165)
+- TBD
 
 ## More:
 RDM support hosts a monthly course with an introduction to R and data. [Check it out!](https://github.com/UtrechtUniversity/workshop-introduction-to-R-and-data)
