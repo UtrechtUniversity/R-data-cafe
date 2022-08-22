@@ -25,10 +25,6 @@ presentation.
 
 ## Scheduled meetings
 
-:exclamation::exclamation: No R Cafe due to COVID-19 outbreak :exclamation::exclamation: 
-
-:question: Are you stuck on an R problem or do you want to share your R code? Feel free to drop a message at [j.debruin1@uu.nl](mailto:j.debruin1@uu.nl).
-
 | When | Where | Showcase |
 |:---------------------------------------------------------------------------------:|:---------------------------------:|:--------------------------------------------------------------:|
 | ~[23 March 2020 from 15:00 to 17:00](https://www.uu.nl/en/node/90435)~ | Bucheliusroom UU Library (Uithof) | CANCEL -> Coronavirus |
